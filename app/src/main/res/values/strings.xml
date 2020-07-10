@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CourseDetail</string>
+    <string name="title_image">https://ekt.xesimg.com//teacher//2019//12//26//15773278601760.png</string>
+    <string name="difficult">难度</string>
+    <string name="audition">试听</string>
+    <string name="service">客服</string>
+    <string name="shopping_cart">购物车</string>
+    <string name="join_shopping_cart">加入购物车</string>
+    <string name="register">立即报名</string>
+</resources>
