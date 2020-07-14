@@ -151,4 +151,5 @@
     <color name="black">#000000</color> <!-- 黑色 -->
     <color name="blackword">#212831</color> <!-- 黑色字体 -->
     <color name="lightgreyword">#848E9B</color> <!-- 浅灰色字体 -->
+    <color name="COLOR_F3F3F4">#F3F3F4</color>
 </resources>

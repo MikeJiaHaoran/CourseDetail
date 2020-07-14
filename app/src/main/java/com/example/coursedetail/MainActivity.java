@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.Adapter.RVAdapter;
+import com.example.coursedetail.Fragment.ServiceDialogFragment;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -82,5 +83,19 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void onClick(View v) {
+        String[] content;
+        if (v.getId() == R.id.cl_service1) {
+            content = getResources().getStringArray(R.array.item2);
+            ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
+            serviceDialogFragment.show(getSupportFragmentManager(), "");
+        }
+        if (v.getId() == R.id.cl_service2) {
+            content = getResources().getStringArray(R.array.item3);
+            ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
+            serviceDialogFragment.show(getSupportFragmentManager(), "");
+        }
     }
 }

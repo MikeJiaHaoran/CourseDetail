@@ -37,20 +37,10 @@ public class RVAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item_detail1, parent, false);
-        ItemDetail1 itemDetail1 = new ItemDetail1(view);
-        itemDetail1.imTitleImage = view.findViewById(R.id.iv_title_image);
-        itemDetail1.imBackButton = view.findViewById(R.id.iv_back_button);
-        itemDetail1.imShareButton = view.findViewById(R.id.iv_share_button);
-        itemDetail1.tvItem1Text1 = view.findViewById(R.id.tv_item1_text1);
-        itemDetail1.tvItem1Text2 = view.findViewById(R.id.tv_item1_text2);
-        itemDetail1.tvItem1Text3 = view.findViewById(R.id.tv_item1_text3);
-        itemDetail1.tvItem1Money = view.findViewById(R.id.tv_item1_money);
-        itemDetail1.tvItem1Num = view.findViewById(R.id.tv_item1_num);
-        itemDetail1.rbDifficultStar = view.findViewById(R.id.difficult_stars);
-        itemDetail1.tvItem1Audition = view.findViewById(R.id.tv_item1_audition);
 
-        return itemDetail1;
+            View view = inflater.inflate(R.layout.item_detail1, parent, false);
+
+        return new ItemDetail1(view);
     }
 
     @Override
@@ -71,6 +61,28 @@ public class RVAdapter extends RecyclerView.Adapter {
         Drawable drawable = context.getResources().getDrawable(R.drawable.ic_course_card_audition_tag);
         drawable.setBounds(0,0,50,50);
         detail1.tvItem1Audition.setCompoundDrawables(drawable, null, null, null);
+        String[] item2 = context.getResources().getStringArray(R.array.item2);
+        detail1.tvServiceList1.setText(item2[1]);
+        detail1.tvServiceList1.setBackgroundResource(R.drawable.shape_corners_service_list);
+        String[] item3 = context.getResources().getStringArray(R.array.item3);
+        int num;
+        if (Integer.parseInt(item3[0]) > 4) {
+            num = 4;
+        }
+        else {
+            num = Integer.parseInt(item3[0]);
+        }
+
+        StringBuilder buffer = new StringBuilder();
+        for (int i = 0; i < num; i++) {
+            if (i == num - 1) {
+                buffer.append(item3[2 * i + 1]);
+                break;
+            }
+            buffer.append(item3[2 * i + 1]).append("·");
+        }
+
+        detail1.tvServiceList2.setText(buffer.toString());
 
         detail1.imBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,4 +115,5 @@ public class RVAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return data.size();
     }
+
 }
