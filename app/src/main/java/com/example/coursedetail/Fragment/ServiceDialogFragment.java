@@ -43,10 +43,10 @@ public class ServiceDialogFragment extends DialogFragment {
 
         params.height = Integer.parseInt(content[0]) > 4 ? 1600 : 800;
         window.setAttributes(params);
-        int color = ContextCompat.getColor(Objects.requireNonNull(getActivity()), android.R.color.white);
-        window.setBackgroundDrawable(new ColorDrawable(color));
-       // Objects.requireNonNull(getDialog().getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
+        //int color = ContextCompat.getColor(Objects.requireNonNull(getActivity()), android.R.color.white);
+        //window.setBackgroundDrawable(new ColorDrawable(color));
+        Objects.requireNonNull(getDialog().getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        window.setWindowAnimations(R.style.dialog_animation);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -65,7 +65,7 @@ public class ServiceDialogFragment extends DialogFragment {
             }
         });
         RecyclerView recyclerView = dialogView.findViewById(R.id.rv_Course_Service_Detail);
-       // recyclerView.setBackgroundResource(R.drawable.shape_corners_dialog_service);
+        recyclerView.setBackgroundResource(R.drawable.shape_corners_dialog_service);
         CSDAdapter csdAdapter = new CSDAdapter(content, context);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);

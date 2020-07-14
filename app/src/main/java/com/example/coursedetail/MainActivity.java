@@ -1,11 +1,18 @@
 package com.example.coursedetail;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,8 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coursedetail.Adapter.CSDAdapter;
 import com.example.coursedetail.Adapter.RVAdapter;
-import com.example.coursedetail.Fragment.ServiceDialogFragment;
+import com.example.coursedetail.Fragment.ServiceActivityWindow;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -22,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvShoppingCart;
     private TextView tvJoinShoppingCart;
     private TextView tvRegister;
+    private PopupWindow popupWindow;
+    private View contentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
         init();
         setAdapter();
 
@@ -86,16 +95,74 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
-        String[] content;
+        /*String[] content = {};
+        Bundle bundle = new Bundle();*/
         if (v.getId() == R.id.cl_service1) {
-            content = getResources().getStringArray(R.array.item2);
-            ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
-            serviceDialogFragment.show(getSupportFragmentManager(), "");
+            showPopwindow1();
+            openPopWindow();
+          //  content = getResources().getStringArray(R.array.item2);
+           // ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
+           // serviceDialogFragment.show(getSupportFragmentManager(), "");
         }
         if (v.getId() == R.id.cl_service2) {
-            content = getResources().getStringArray(R.array.item3);
-            ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
-            serviceDialogFragment.show(getSupportFragmentManager(), "");
+            showPopwindow2();
+            openPopWindow();
+          //  content = getResources().getStringArray(R.array.item3);
+           // ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
+           // serviceDialogFragment.show(getSupportFragmentManager(), "");
         }
+      /*  bundle.putStringArray("ItemInfo", content);
+        Intent intent = new Intent(MainActivity.this, ServiceActivityWindow.class);
+        intent.putExtras(bundle);
+        startActivity(intent);*/
+    }
+
+    public void showPopwindow2() {
+        setPopupWindow(1600);
+        String[] content = getResources().getStringArray(R.array.item3);
+        setLayouot(content);
+    }
+
+    public void showPopwindow1() {
+        setPopupWindow(800);
+        String[] content = getResources().getStringArray(R.array.item2);
+        setLayouot(content);
+    }
+
+    public void openPopWindow() {
+        //从底部显示
+        popupWindow.showAtLocation(contentView, Gravity.BOTTOM, 0, 0);
+    }
+
+    @SuppressLint("ResourceAsColor")
+    public void setPopupWindow(int height) {
+        contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.service_detail, null);
+        popupWindow =  new PopupWindow(contentView,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                height);
+        popupWindow.setFocusable(true);// 取得焦点
+        //注意  要是点击外部空白处弹框消息  那么必须给弹框设置一个背景色  不然是不起作用的
+        popupWindow.setBackgroundDrawable(new ColorDrawable(R.color.white));
+        //点击外部消失
+        popupWindow.setOutsideTouchable(true);
+        //设置可以点击
+        popupWindow.setTouchable(true);
+        //进入退出的动画，指定刚才定义的style
+        popupWindow.setAnimationStyle(R.style.dialog_animation);
+    }
+
+    public void setLayouot(String[] content) {
+        ImageView im_Course_Service_Back = contentView.findViewById(R.id.im_Course_Service_Back);
+        RecyclerView recyclerView = contentView.findViewById(R.id.rv_Course_Service_Detail);
+        CSDAdapter csdAdapter = new CSDAdapter(content, this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(csdAdapter);
+        im_Course_Service_Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
     }
 }

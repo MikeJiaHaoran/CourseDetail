@@ -40,7 +40,7 @@
         android:id="@+id/tv_item1_audition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/shape_corners_12_left_878e9a"
         android:drawableStart="@drawable/ic_course_card_audition_tag"
         android:drawableLeft="@drawable/ic_course_card_audition_tag"
@@ -54,6 +54,8 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toEndOf="@+id/tv_item1_text2"
         app:layout_constraintTop_toBottomOf="@id/iv_title_image" />
 
     <TextView
@@ -151,13 +153,15 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="17dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="#5B6169"
         android:textSize="14sp"
-        android:maxLines="1"
-        android:ellipsize="end"
         app:layout_constraintBottom_toTopOf="@id/divided_line"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_item1_money" />
 
     <ImageView
         android:id="@+id/divided_line"

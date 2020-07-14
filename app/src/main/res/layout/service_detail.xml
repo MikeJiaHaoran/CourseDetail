@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/shape_corners_dialog_service"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools">
 
@@ -17,7 +18,8 @@
         android:textColor="#212831"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rv_Course_Service_Detail"/>
 
     <ImageView
         android:id="@+id/im_Course_Service_Back"
@@ -34,7 +36,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_Course_Service_Detail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="684dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Course_Service_Detail" />

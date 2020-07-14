@@ -13,4 +13,24 @@
         <item name="android:maxHeight">30dp</item>
     </style>
 
+
+    <!--控制dialog进出动画-->
+
+    <style name="dialog_animation" parent="android:Animation">
+
+        <item name="android:windowEnterAnimation">@animator/dialog_enter</item>
+
+        <!-- 进入时的动画 -->
+
+        <item name="android:windowExitAnimation">@animator/dialog_exit</item>
+
+        <!-- 退出时的动画 -->
+
+    </style>
+
+    <style name="MyDialogStyleBottom" parent="android:Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/dialog_animation</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>

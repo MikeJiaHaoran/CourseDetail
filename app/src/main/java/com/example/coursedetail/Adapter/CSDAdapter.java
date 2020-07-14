@@ -21,7 +21,6 @@ public class CSDAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = inflater.inflate(R.layout.service_detail_recyclerview, parent, false);
 
         return new CourseServiceDetail(view);
@@ -30,8 +29,7 @@ public class CSDAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         CourseServiceDetail courseServiceDetail = (CourseServiceDetail) holder;
-        courseServiceDetail.CourseServiceDetailTitle.setText(content[position * 2 + 1]);
-        courseServiceDetail.CourseServiceDetailContent.setText(content[position * 2 + 2]);
+        courseServiceDetail.setData(content, position);
     }
 
     @Override
