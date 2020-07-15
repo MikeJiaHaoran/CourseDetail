@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coursedetail.Adapter.CSDAdapter;
 import com.example.coursedetail.Adapter.RVAdapter;
 import com.example.coursedetail.Fragment.ServiceActivityWindow;
+import com.example.coursedetail.Fragment.ServiceDialogFragment;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -95,22 +96,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
-        /*String[] content = {};
-        Bundle bundle = new Bundle();*/
+        String[] content;
+       /* Bundle bundle = new Bundle();*/
         if (v.getId() == R.id.cl_service1) {
-            showPopwindow1();
-            openPopWindow();
-          //  content = getResources().getStringArray(R.array.item2);
-           // ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
-           // serviceDialogFragment.show(getSupportFragmentManager(), "");
+            /** popupwindow 弹窗逻辑*/
+           // showPopwindow1();
+           // openPopWindow();
+
+            /** dialogfragment 弹窗逻辑*/
+            content = getResources().getStringArray(R.array.item2);
+            ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
+            serviceDialogFragment.show(getSupportFragmentManager(), "");
         }
         if (v.getId() == R.id.cl_service2) {
-            showPopwindow2();
-            openPopWindow();
-          //  content = getResources().getStringArray(R.array.item3);
-           // ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
-           // serviceDialogFragment.show(getSupportFragmentManager(), "");
+           // showPopwindow2();
+           // openPopWindow();
+            content = getResources().getStringArray(R.array.item3);
+            ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
+            serviceDialogFragment.show(getSupportFragmentManager(), "");
         }
+
+        /** activity 弹窗逻辑*/
       /*  bundle.putStringArray("ItemInfo", content);
         Intent intent = new Intent(MainActivity.this, ServiceActivityWindow.class);
         intent.putExtras(bundle);
