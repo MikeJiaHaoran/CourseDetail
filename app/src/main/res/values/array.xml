@@ -9,6 +9,10 @@
         <item>810</item>
     </string-array>
 
+    <string-array name="title_image">
+        <item>image</item>
+    </string-array>
+
     <string-array name="course_detail_webview">
         <item>https://zt.xueersi.com/xueke/zj/2020sq/s/yw_x5/?id=204&amp;v=84&amp;ls=0</item>
     </string-array>
@@ -46,4 +50,5 @@
         <item>设备说明</item>
         <item>（1）网校直播课电脑设备支持：Win电脑CPUi3及以上，内存4G及以上，Windows7或者Windows10操作系统；Mac电脑操作系统版本不低于10.11； （2）网校直播课App设备支持：①安卓设备6.0及以上系统版本，2GB及以上运行内存；②iOS10.0及以上系统版本，支持iPhone6及以上手机机型，不支持iPad3、iPad mini1；（3）推荐使用电脑客户端及手机App学习，上课体验更佳。</item>
     </string-array>
+
 </resources>

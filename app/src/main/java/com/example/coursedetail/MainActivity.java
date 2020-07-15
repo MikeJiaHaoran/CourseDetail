@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.Adapter.CSDAdapter;
 import com.example.coursedetail.Adapter.RVAdapter;
+import com.example.coursedetail.Entity.ClickSleep;
 import com.example.coursedetail.Fragment.ServiceActivityWindow;
 import com.example.coursedetail.Fragment.ServiceDialogFragment;
 
@@ -33,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvRegister;
     private PopupWindow popupWindow;
     private View contentView;
+    private ClickSleep clickSleep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         init();
@@ -51,33 +54,69 @@ public class MainActivity extends AppCompatActivity {
         dShoppingCart.setBounds(0, 0, 80, 80);
         tvShoppingCart.setCompoundDrawables(null, dShoppingCart, null, null);
 
+        clickSleep = new ClickSleep();
         tvService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "已经联系客服", Toast.LENGTH_SHORT).show();
+                if (!clickSleep.isRuning()) {
+                    Toast.makeText(MainActivity.this, "已经联系客服", Toast.LENGTH_SHORT).show();
+                    clickSleep.runWithTime(500);
+                }
+
             }
         });
 
         tvShoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "已经加入购物车", Toast.LENGTH_SHORT).show();
+                if (!clickSleep.isRuning()) {
+                    Toast.makeText(MainActivity.this, "已经加入购物车", Toast.LENGTH_SHORT).show();
+                    clickSleep.runWithTime(500);
+                }
+
             }
         });
 
         tvJoinShoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "已经加入购物车", Toast.LENGTH_SHORT).show();
+                if (!clickSleep.isRuning()) {
+                    Toast.makeText(MainActivity.this, "加入购物车", Toast.LENGTH_SHORT).show();
+                    clickSleep.runWithTime(500);
+                }
             }
         });
 
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "已经报名成功", Toast.LENGTH_SHORT).show();
+                if (!clickSleep.isRuning()) {
+                    Toast.makeText(MainActivity.this, "已经报名成功", Toast.LENGTH_SHORT).show();
+                    clickSleep.runWithTime(500);
+                }
             }
         });
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+
+        WebView mWebView = findViewById(R.id.wv_Course_Detail);
+        if (mWebView != null) {
+
+            mWebView.loadDataWithBaseURL(null,"","text/html","utf-8",null);
+            mWebView.stopLoading();
+
+
+            ViewGroup parent = (ViewGroup) mWebView.getParent();
+            if (parent != null) {
+                parent.removeView(mWebView);
+            }
+            mWebView.clearHistory();
+            mWebView.destroy();
+            mWebView=null;
+        }
+
     }
 
     public void init() {
@@ -164,10 +203,14 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(csdAdapter);
+        clickSleep = new ClickSleep();
         im_Course_Service_Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                popupWindow.dismiss();
+                if (!clickSleep.isRuning()) {
+                    popupWindow.dismiss();
+                    clickSleep.runWithTime(500);
+                }
             }
         });
     }

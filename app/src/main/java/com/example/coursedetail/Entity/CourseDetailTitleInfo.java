@@ -17,10 +17,10 @@ import com.example.coursedetail.R;
 
 import java.util.List;
 
-public class ItemDetail1 extends RecyclerView.ViewHolder {
-    private ImageView imTitleImage;
+public class CourseDetailTitleInfo extends RecyclerView.ViewHolder {
+   /* private ImageView imTitleImage;
     private ImageView imBackButton;
-    private ImageView imShareButton;
+    private ImageView imShareButton;*/
     private TextView tvItem1Text1;
     private TextView tvItem1Text2;
     private TextView tvItem1Text3;
@@ -28,15 +28,15 @@ public class ItemDetail1 extends RecyclerView.ViewHolder {
     private TextView tvItem1Num;
     private RatingBar rbDifficultStar;
     private TextView tvItem1Audition;
-    private TextView tvServiceList1;
-    private TextView tvServiceList2;
+   /* private TextView tvServiceList1;
+    private TextView tvServiceList2;*/
 
-    public ItemDetail1(@NonNull View itemView) {
+    public CourseDetailTitleInfo(@NonNull View itemView) {
         super(itemView);
 
-        imTitleImage = itemView.findViewById(R.id.iv_title_image);
+       /* imTitleImage = itemView.findViewById(R.id.iv_title_image);
         imBackButton = itemView.findViewById(R.id.iv_back_button);
-        imShareButton = itemView.findViewById(R.id.iv_share_button);
+        imShareButton = itemView.findViewById(R.id.iv_share_button);*/
         tvItem1Text1 = itemView.findViewById(R.id.tv_item1_text1);
         tvItem1Text2 = itemView.findViewById(R.id.tv_item1_text2);
         tvItem1Text3 = itemView.findViewById(R.id.tv_item1_text3);
@@ -44,15 +44,17 @@ public class ItemDetail1 extends RecyclerView.ViewHolder {
         tvItem1Num = itemView.findViewById(R.id.tv_item1_num);
         rbDifficultStar = itemView.findViewById(R.id.difficult_stars);
         tvItem1Audition = itemView.findViewById(R.id.tv_item1_audition);
-        tvServiceList1 = itemView.findViewById(R.id.tv_service_list1);
-        tvServiceList2 = itemView.findViewById(R.id.tv_service_list2);
+      /*  tvServiceList1 = itemView.findViewById(R.id.tv_service_list1);
+        tvServiceList2 = itemView.findViewById(R.id.tv_service_list2);*/
 
     }
 
-    public void setData(final Context context, List<Integer> images1) {
-        Glide.with(context).load(images1.get(0)).into(imTitleImage);
+    public void setData(final Context context) {
+     /*   Glide.with(context).load(images1.get(0)).into(imTitleImage);
         Glide.with(context).load(images1.get(1)).into(imBackButton);
         Glide.with(context).load(images1.get(2)).into(imShareButton);
+
+      */
         String[] item1 = context.getResources().getStringArray(R.array.item1);
         tvItem1Text1.setText(item1[0]);
         tvItem1Text2.setText(item1[1]);
@@ -64,7 +66,7 @@ public class ItemDetail1 extends RecyclerView.ViewHolder {
         Drawable drawable = context.getResources().getDrawable(R.drawable.ic_course_card_audition_tag);
         drawable.setBounds(0,0,50,50);
         tvItem1Audition.setCompoundDrawables(drawable, null, null, null);
-        String[] item2 = context.getResources().getStringArray(R.array.item2);
+     /*   String[] item2 = context.getResources().getStringArray(R.array.item2);
         tvServiceList1.setText(item2[1]);
         tvServiceList1.setBackgroundResource(R.drawable.shape_corners_service_list);
         String[] item3 = context.getResources().getStringArray(R.array.item3);
@@ -102,11 +104,15 @@ public class ItemDetail1 extends RecyclerView.ViewHolder {
                 Toast.makeText(context, "已经分享至微信", Toast.LENGTH_SHORT).show();
             }
         });
-
+        */
         tvItem1Audition.setOnClickListener(new View.OnClickListener() {
+            ClickSleep clickSleep = new ClickSleep();
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "下面请收听XXX课程", Toast.LENGTH_SHORT).show();
+                if (!clickSleep.isRuning()) {
+                    Toast.makeText(context, "下面请收听XXX课程", Toast.LENGTH_SHORT).show();
+                    clickSleep.runWithTime(500);
+                }
             }
         });
     }
