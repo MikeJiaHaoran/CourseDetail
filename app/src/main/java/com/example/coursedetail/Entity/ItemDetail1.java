@@ -49,7 +49,7 @@ public class ItemDetail1 extends RecyclerView.ViewHolder {
 
     }
 
-    public void serData(final Context context, List<Integer> images1) {
+    public void setData(final Context context, List<Integer> images1) {
         Glide.with(context).load(images1.get(0)).into(imTitleImage);
         Glide.with(context).load(images1.get(1)).into(imBackButton);
         Glide.with(context).load(images1.get(2)).into(imShareButton);

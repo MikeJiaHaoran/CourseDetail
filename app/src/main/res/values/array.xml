@@ -9,6 +9,10 @@
         <item>810</item>
     </string-array>
 
+    <string-array name="course_detail_webview">
+        <item>https://zt.xueersi.com/xueke/zj/2020sq/s/yw_x5/?id=204&amp;v=84&amp;ls=0</item>
+    </string-array>
+
     <string-array name="item2">
         <item>1</item>
         <item>配套学习资料</item>
