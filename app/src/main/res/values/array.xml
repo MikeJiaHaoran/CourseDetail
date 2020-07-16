@@ -51,4 +51,31 @@
         <item>（1）网校直播课电脑设备支持：Win电脑CPUi3及以上，内存4G及以上，Windows7或者Windows10操作系统；Mac电脑操作系统版本不低于10.11； （2）网校直播课App设备支持：①安卓设备6.0及以上系统版本，2GB及以上运行内存；②iOS10.0及以上系统版本，支持iPhone6及以上手机机型，不支持iPad3、iPad mini1；（3）推荐使用电脑客户端及手机App学习，上课体验更佳。</item>
     </string-array>
 
+    <string-array name="item_students">
+        <item>学生评价·4</item>
+        <item>好评率99.9%</item>
+        <item>全部</item>
+        <item>生动有趣·4</item>
+        <item>耐心细致·4</item>
+        <item>讲解透彻·4</item>
+        <item>认真负责·3</item>
+        <item>通俗易懂·3</item>
+    </string-array>
+
+    <string-array name="item_student_detail">
+        <item>https://oot.xesimg.com/user/h/wx-def20191008.png</item>
+        <item>学员012sqt</item>
+        <item>03月29日</item>
+        <item>好评</item>
+        <item>是一位很棒孩子喜欢的老师</item>
+        <item>生动有趣</item>
+        <item>耐心细致</item>
+        <item>讲解透彻</item>
+    </string-array>
+
+    <string-array name="item_evaluate_more">
+        <item>查看全部评价</item>
+        <item>https://touch.xueersi.com/teacher/evaluation?teacherids=2867&amp;courseId=84153</item>
+    </string-array>
+
 </resources>

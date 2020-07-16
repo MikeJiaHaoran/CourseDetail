@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cl_student_evaluate"
+    android:onClick="onClick"
+    android:clickable="true"
+    android:layout_marginTop="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/im_student"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_student_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="#1F2832"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/im_student"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_evaluate_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="#ABB4BF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/im_student"
+        app:layout_constraintTop_toBottomOf="@id/tv_student_name" />
+
+    <TextView
+        android:id="@+id/tv_evaluate_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.933"
+        android:drawableRight="@drawable/icon_teacher_detail_evaluation_smile"
+        android:drawablePadding="4dp"
+        android:text="@string/好评"
+        android:textColor="#EB002A"
+        app:layout_constraintStart_toEndOf="@id/tv_student_name"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlHardcoded" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/fl_student_evaluate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_evaluate_date"
+        app:flexWrap="wrap"
+        />
+
+    <TextView
+        android:id="@+id/tv_evaluate_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="12dp"
+        android:textColor="#1F2832"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fl_student_evaluate" />
+
+    <ImageView
+        android:id="@+id/im_evaluate_divided_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#F9F9FC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_evaluate_content"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

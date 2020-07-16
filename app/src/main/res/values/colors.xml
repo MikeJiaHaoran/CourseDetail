@@ -110,6 +110,7 @@
     <color name="lightslategrey">#778899</color> <!-- 亮蓝灰 -->
     <color name="slategray">#708090</color> <!-- 灰石色 -->
     <color name="slategrey">#708090</color> <!-- 灰石色 -->
+    <color name="greyword">#838C97</color> <!-- #838C97 -->
     <color name="olivedrab">#6b8e23</color> <!-- 深绿褐色 -->
     <color name="slateblue">#6a5acd</color> <!-- 石蓝色 -->
     <color name="dimgray">#696969</color> <!-- 暗灰色 -->

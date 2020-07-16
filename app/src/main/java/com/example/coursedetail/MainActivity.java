@@ -26,6 +26,7 @@ import com.example.coursedetail.Adapter.RVAdapter;
 import com.example.coursedetail.Entity.ClickSleep;
 import com.example.coursedetail.Fragment.ServiceActivityWindow;
 import com.example.coursedetail.Fragment.ServiceDialogFragment;
+import com.example.coursedetail.Fragment.StudentEvaluateDialogFragment;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -153,6 +154,12 @@ public class MainActivity extends AppCompatActivity {
             content = getResources().getStringArray(R.array.item3);
             ServiceDialogFragment serviceDialogFragment = new ServiceDialogFragment(this, content);
             serviceDialogFragment.show(getSupportFragmentManager(), "");
+        }
+
+        if (v.getId() == R.id.cl_student_evaluate || v.getId() == R.id.cl_students_evaluate || v.getId() == R.id.cl_student_more) {
+            content = getResources().getStringArray(R.array.item_evaluate_more);
+            StudentEvaluateDialogFragment studentEvaluateDialogFragment = new StudentEvaluateDialogFragment(this, content);
+            studentEvaluateDialogFragment.show(getSupportFragmentManager(), "");
         }
 
         /** activity 弹窗逻辑*/
