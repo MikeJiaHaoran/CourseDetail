@@ -53,6 +53,7 @@ public class StudentEvaluateDialogFragment extends DialogFragment {
         ImageView im_back = dialogView.findViewById(R.id.im_Evaluate_Detail_Back);
         WebView wv_students_evaluate = dialogView.findViewById(R.id.wv_students_evaluate);
         wv_students_evaluate.loadUrl(content[1]);
+        wv_students_evaluate.getSettings().setUseWideViewPort(true);
         wv_students_evaluate.getSettings().setLoadWithOverviewMode(true);
         wv_students_evaluate.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         wv_students_evaluate.getSettings().setJavaScriptEnabled(true);
