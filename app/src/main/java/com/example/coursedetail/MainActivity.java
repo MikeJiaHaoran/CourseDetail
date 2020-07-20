@@ -25,6 +25,7 @@ import com.example.coursedetail.Adapter.CourseServiceDetailAdapter;
 import com.example.coursedetail.Adapter.CourseDetailAdapter;
 import com.example.coursedetail.Entity.OnUnDoubleClickListener;
 import com.example.coursedetail.Fragment.ServiceDialogFragment;
+import com.example.coursedetail.Fragment.ShareCourseFragment;
 import com.example.coursedetail.Fragment.StudentEvaluateDialogFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvJoinShoppingCart;
     private TextView tvRegister;
     private PopupWindow popUpWindow;
+    private ImageView imBackButton;
+    private ImageView imShareButton;
     private View contentView;
 
     @Override
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "已经报名成功", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     protected void onDestroy() {

@@ -6,9 +6,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.coursedetail.Fragment.ShareCourseFragment;
 import com.example.coursedetail.R;
 
 import java.util.List;
@@ -42,7 +44,9 @@ public class CourseDetailTitleImage extends RecyclerView.ViewHolder {
         imShareButton.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
             public void onUnDoubleClick(View v) {
-                Toast.makeText(itemView.getContext(), "已经分享至微信", Toast.LENGTH_SHORT).show();
+                ShareCourseFragment shareCourseFragment = new ShareCourseFragment();
+                shareCourseFragment.show(((AppCompatActivity) itemView.getContext()).getSupportFragmentManager(),"");
+                //Toast.makeText(itemView.getContext(), "已经分享至微信", Toast.LENGTH_SHORT).show();
             }
         });
     }
