@@ -17,38 +17,32 @@ public class CourseDetailTitleImage extends RecyclerView.ViewHolder {
     private ImageView imTitleImage;
     private ImageView imBackButton;
     private ImageView imShareButton;
+    private  View itemView;
 
     public CourseDetailTitleImage(@NonNull View itemView) {
         super(itemView);
+        this.itemView = itemView;
         imTitleImage = itemView.findViewById(R.id.iv_title_image);
         imBackButton = itemView.findViewById(R.id.iv_back_button);
         imShareButton = itemView.findViewById(R.id.iv_share_button);
     }
 
-    public void setData(final Context context, List<Integer> images1) {
-        Glide.with(context).load(images1.get(0)).into(imTitleImage);
-        Glide.with(context).load(images1.get(1)).into(imBackButton);
-        Glide.with(context).load(images1.get(2)).into(imShareButton);
+    public void setData( List<Integer> images1) {
+        Glide.with(itemView.getContext()).load(images1.get(0)).into(imTitleImage);
+        Glide.with(itemView.getContext()).load(images1.get(1)).into(imBackButton);
+        Glide.with(itemView.getContext()).load(images1.get(2)).into(imShareButton);
 
-        final ClickSleep clickSleep = new ClickSleep();
-        imBackButton.setOnClickListener(new View.OnClickListener() {
+        imBackButton.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
-            public void onClick(View view) {
-                if (!clickSleep.isRuning()) {
-                    Toast.makeText(context, "已经返回首页", Toast.LENGTH_SHORT).show();
-                }
-                clickSleep.runWithTime(500);
+            public void onUnDoubleClick(View v) {
+                Toast.makeText(itemView.getContext(), "已经返回首页", Toast.LENGTH_SHORT).show();
             }
         });
 
-        imShareButton.setOnClickListener(new View.OnClickListener(){
-            final ClickSleep clickSleep = new ClickSleep();
+        imShareButton.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
-            public void onClick(View view) {
-                if (!clickSleep.isRuning()) {
-                    Toast.makeText(context, "已经分享至微信", Toast.LENGTH_SHORT).show();
-                    clickSleep.runWithTime(500);
-                }
+            public void onUnDoubleClick(View v) {
+                Toast.makeText(itemView.getContext(), "已经分享至微信", Toast.LENGTH_SHORT).show();
             }
         });
     }

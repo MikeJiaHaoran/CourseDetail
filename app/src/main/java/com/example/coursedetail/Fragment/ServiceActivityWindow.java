@@ -14,7 +14,7 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.coursedetail.Adapter.CSDAdapter;
+import com.example.coursedetail.Adapter.CourseServiceDetailAdapter;
 import com.example.coursedetail.R;
 
 import java.util.Objects;
@@ -39,11 +39,11 @@ public class ServiceActivityWindow extends Activity implements View.OnClickListe
 
         window .setAttributes(lp);
         ImageView im_Course_Service_Back = findViewById(R.id.im_Course_Service_Back);
-        RecyclerView recyclerView = findViewById(R.id.rv_Course_Service_Detail);
-        CSDAdapter csdAdapter = new CSDAdapter(content, this);
+        RecyclerView recycler_viewServiceActivity = findViewById(R.id.rv_Course_Service_Detail);
+        CourseServiceDetailAdapter courseServiceDetailAdapter = new CourseServiceDetailAdapter(content);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(csdAdapter);
+        recycler_viewServiceActivity.setLayoutManager(layoutManager);
+        recycler_viewServiceActivity.setAdapter(courseServiceDetailAdapter);
         im_Course_Service_Back.setOnClickListener(this);
 
     }

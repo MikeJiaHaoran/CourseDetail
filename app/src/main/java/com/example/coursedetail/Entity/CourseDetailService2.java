@@ -11,14 +11,16 @@ import com.example.coursedetail.R;
 
 public class CourseDetailService2 extends RecyclerView.ViewHolder {
     private TextView tvServiceList2;
+    private  View itemView;
 
     public CourseDetailService2(@NonNull View itemView) {
         super(itemView);
+        this.itemView = itemView;
         tvServiceList2 = itemView.findViewById(R.id.tv_service_list2);
     }
 
-    public void setData(final Context context) {
-        String[] item3 = context.getResources().getStringArray(R.array.item3);
+    public void setData() {
+        String[] item3 = itemView.getContext().getResources().getStringArray(R.array.item3);
 
         int num;
         if (Integer.parseInt(item3[0]) > 4) {

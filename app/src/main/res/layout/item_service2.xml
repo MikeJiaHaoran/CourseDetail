@@ -2,10 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/cl_service2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
     android:onClick="onClick"
     android:clickable="true"
-    app:layout_constraintTop_toBottomOf="@id/cl_service1"
     android:background="@drawable/shape_top_line_f3f3f4_1dp"
     android:focusable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,17 +16,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="@string/服务"
         android:textColor="#878E9A"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:maxLines="1"
-        android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -37,8 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="#212831"
@@ -56,15 +50,18 @@
         android:layout_marginRight="16dp"
         android:contentDescription="@null"
         android:src="@drawable/coursedetails_more_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_service_list2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="fill_parent"
         android:layout_height="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:background="#F7F7F8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_service_title2"

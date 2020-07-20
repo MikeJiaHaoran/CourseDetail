@@ -2,10 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/cl_service1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
     android:onClick="onClick"
     android:clickable="true"
-    app:layout_constraintTop_toBottomOf="@id/divided_line"
     android:background="@drawable/shape_top_line_f3f3f4_1dp"
     android:focusable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -57,7 +55,9 @@
         android:src="@drawable/coursedetails_more_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_service_title1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.521" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

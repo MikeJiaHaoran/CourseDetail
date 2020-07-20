@@ -11,17 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coursedetail.Entity.CourseServiceDetail;
 import com.example.coursedetail.R;
 
-public class CSDAdapter extends RecyclerView.Adapter {
-    private LayoutInflater inflater;
+public class CourseServiceDetailAdapter extends RecyclerView.Adapter {
     private String[] content;
-    public CSDAdapter(String[] content, Context context) {
+    public CourseServiceDetailAdapter(String[] content) {
         this.content = content;
-        this.inflater = LayoutInflater.from(context);
     }
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.service_detail_recyclerview, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.service_detail_recyclerview, parent, false);
 
         return new CourseServiceDetail(view);
     }
