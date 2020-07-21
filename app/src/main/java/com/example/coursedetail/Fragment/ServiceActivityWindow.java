@@ -26,7 +26,7 @@ public class ServiceActivityWindow extends Activity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.service_detail);
+        setContentView(R.layout.fragment_service_detail);
 
         Bundle bundle = getIntent().getExtras();
         String[] content = Objects.requireNonNull(bundle).getStringArray("ItemInfo");

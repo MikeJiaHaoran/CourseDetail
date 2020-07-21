@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 import com.example.coursedetail.R;
 import com.google.android.flexbox.FlexboxLayout;
 
-public class StudentEvaluate extends RecyclerView.ViewHolder {
+public class CourseDetailStudentEvaluate extends RecyclerView.ViewHolder {
     private ImageView imStudent;
     private TextView tvStudentName;
     private TextView tvEvaluateDate;
@@ -20,7 +20,7 @@ public class StudentEvaluate extends RecyclerView.ViewHolder {
     private TextView tvEvaluateContent;
     private View itemView;
 
-    public StudentEvaluate(@NonNull View itemView) {
+    public CourseDetailStudentEvaluate(@NonNull View itemView) {
         super(itemView);
         this.itemView = itemView;
         imStudent = itemView.findViewById(R.id.im_student);

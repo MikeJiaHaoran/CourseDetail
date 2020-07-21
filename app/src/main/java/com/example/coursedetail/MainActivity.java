@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +24,6 @@ import com.example.coursedetail.Adapter.CourseServiceDetailAdapter;
 import com.example.coursedetail.Adapter.CourseDetailAdapter;
 import com.example.coursedetail.Entity.OnUnDoubleClickListener;
 import com.example.coursedetail.Fragment.ServiceDialogFragment;
-import com.example.coursedetail.Fragment.ShareCourseFragment;
 import com.example.coursedetail.Fragment.StudentEvaluateDialogFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -174,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint({"ResourceAsColor", "InflateParams"})
     public void setPopupWindow(int height) {
-        contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.service_detail, null);
+        contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.fragment_service_detail, null);
         popUpWindow =  new PopupWindow(contentView,
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 height);

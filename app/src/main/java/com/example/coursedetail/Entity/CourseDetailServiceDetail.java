@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.R;
 
-public class CourseServiceDetail extends RecyclerView.ViewHolder {
+public class CourseDetailServiceDetail extends RecyclerView.ViewHolder {
     private TextView tvCourseServiceDetailTitle;
     private TextView tvCourseServiceDetailContent;
 
-    public CourseServiceDetail(@NonNull View itemView) {
+    public CourseDetailServiceDetail(@NonNull View itemView) {
         super(itemView);
 
         tvCourseServiceDetailTitle = itemView.findViewById(R.id.tv_Course_Service_Detail_Title);

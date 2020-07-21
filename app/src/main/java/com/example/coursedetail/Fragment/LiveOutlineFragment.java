@@ -1,8 +1,8 @@
 package com.example.coursedetail.Fragment;
 
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -11,26 +11,23 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.coursedetail.Adapter.CourseServiceDetailAdapter;
+import com.example.coursedetail.Adapter.LiveOutlineAdapter;
 import com.example.coursedetail.Entity.OnUnDoubleClickListener;
 import com.example.coursedetail.R;
 
-public class ServiceDialogFragment extends DialogFragment {
+public class LiveOutlineFragment extends DialogFragment {
+
     private String[] content;
 
-      public ServiceDialogFragment(String[] content) {
-          this.content = content;
+    public LiveOutlineFragment(String[] content) {
+        this.content = content;
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void onStart() {
         super.onStart();
 
@@ -39,19 +36,18 @@ public class ServiceDialogFragment extends DialogFragment {
 
         if (window != null) {
             params = window.getAttributes();
-            params.gravity = Gravity.BOTTOM;
+            params.gravity = Gravity.END;
             params.width = WindowManager.LayoutParams.MATCH_PARENT;
-            params.height = Integer.parseInt(content[0]) > 4 ? 1600 : 800;
+            params.height = WindowManager.LayoutParams.MATCH_PARENT;
             window.setAttributes(params);
-            getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            window.setWindowAnimations(R.style.dialog_animation);
+            getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+            window.setWindowAnimations(R.style.live_outline_animation);
         }
         else {
             exit();
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (getDialog() != null) {
             getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE); // 不显示标题栏
@@ -60,27 +56,28 @@ public class ServiceDialogFragment extends DialogFragment {
             exit();
         }
 
-        View dialogView = inflater.inflate(R.layout.fragment_service_detail, container, false);
-        ImageView CourseServiceBack = dialogView.findViewById(R.id.im_Course_Service_Back);
-        CourseServiceBack.setOnClickListener(new OnUnDoubleClickListener() {
+        View outlineDialogView = inflater.inflate(R.layout.fragment_live_outline_course_detail, container, false);
+        RecyclerView recycler_viewLiveOutlineCourseDetail = outlineDialogView.findViewById(R.id.recycler_view_live_outline_course_detail);
+        ImageView ivLiveOutlineBackButton = outlineDialogView.findViewById(R.id.iv_live_outline_course_detail_back_button);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recycler_viewLiveOutlineCourseDetail.setLayoutManager(layoutManager);
+        content[0] = String.valueOf(Integer.parseInt(content[0]) + 2);
+        LiveOutlineAdapter liveOutlineAdapter = new LiveOutlineAdapter(content);
+        recycler_viewLiveOutlineCourseDetail.setAdapter(liveOutlineAdapter);
+
+        ivLiveOutlineBackButton.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
             public void onUnDoubleClick(View v) {
                 exit();
             }
         });
-        RecyclerView recycler_viewServiceDialog = dialogView.findViewById(R.id.rv_Course_Service_Detail);
-        recycler_viewServiceDialog.setBackgroundResource(R.drawable.shape_corners_dialog_service);
-        CourseServiceDetailAdapter courseServiceDetailAdapter = new CourseServiceDetailAdapter(content);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recycler_viewServiceDialog.setLayoutManager(layoutManager);
-        recycler_viewServiceDialog.setAdapter(courseServiceDetailAdapter);
 
-        return dialogView;
+        return outlineDialogView;
+
     }
 
     private void exit() {
-        ServiceDialogFragment.this.dismiss();
+        LiveOutlineFragment.this.dismiss();
     }
-
-
 }

@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coursedetail.R;
 import com.google.android.flexbox.FlexboxLayout;
 
-public class StudentsEvaluate extends RecyclerView.ViewHolder {
+public class CourseDetailStudentsEvaluate extends RecyclerView.ViewHolder {
     private TextView tvEvaluateTitle;
     private TextView tvEvaluatePercent;
     private FlexboxLayout flex_box_layoutEvaluateDetail;
     private View itemView;
 
-    public StudentsEvaluate(@NonNull View itemView) {
+    public CourseDetailStudentsEvaluate(@NonNull View itemView) {
         super(itemView);
         this.itemView = itemView;
         tvEvaluateTitle = itemView.findViewById(R.id.tv_evaluate_title);

@@ -14,14 +14,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.Adapter.ShareCourseAdapter;
 import com.example.coursedetail.Entity.OnUnDoubleClickListener;
 import com.example.coursedetail.R;
-
-import java.util.Objects;
 
 public class ShareCourseFragment extends DialogFragment {
 
@@ -55,7 +52,7 @@ public class ShareCourseFragment extends DialogFragment {
             exit();
         }
 
-        View shareDialogView = inflater.inflate(R.layout.module_dialog_share_course, container, false);
+        View shareDialogView = inflater.inflate(R.layout.dialog_share_course, container, false);
         RecyclerView recycler_viewShareDialog = shareDialogView.findViewById(R.id.recycler_view_share_course_dialog);
         TextView tvShareServiceBack = shareDialogView.findViewById(R.id.tv_share_service_back);
         recycler_viewShareDialog.setBackgroundResource(R.drawable.shape_corners_dialog_service);

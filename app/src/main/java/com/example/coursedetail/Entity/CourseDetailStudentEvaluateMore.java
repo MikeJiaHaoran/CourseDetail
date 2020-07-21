@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.R;
 
-public class StudentEvaluateMore extends RecyclerView.ViewHolder {
+public class CourseDetailStudentEvaluateMore extends RecyclerView.ViewHolder {
 
-    public StudentEvaluateMore(@NonNull View itemView) {
+    public CourseDetailStudentEvaluateMore(@NonNull View itemView) {
         super(itemView);
     }
 }

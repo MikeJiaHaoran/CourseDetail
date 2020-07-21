@@ -1,6 +1,5 @@
 package com.example.coursedetail.Adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.coursedetail.Entity.CourseServiceDetail;
+import com.example.coursedetail.Entity.CourseDetailServiceDetail;
 import com.example.coursedetail.R;
 
 public class CourseServiceDetailAdapter extends RecyclerView.Adapter {
@@ -19,15 +18,15 @@ public class CourseServiceDetailAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.service_detail_recyclerview, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_item_service_detail, parent, false);
 
-        return new CourseServiceDetail(view);
+        return new CourseDetailServiceDetail(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        CourseServiceDetail courseServiceDetail = (CourseServiceDetail) holder;
-        courseServiceDetail.setData(content, position);
+        CourseDetailServiceDetail courseDetailServiceDetail = (CourseDetailServiceDetail) holder;
+        courseDetailServiceDetail.setData(content, position);
     }
 
     @Override

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.coursedetail.Entity.ShareCourse;
+import com.example.coursedetail.Entity.CourseDetailShareCourse;
 import com.example.coursedetail.R;
 
 public class ShareCourseAdapter extends RecyclerView.Adapter {
@@ -20,16 +20,16 @@ public class ShareCourseAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.module_recycle_item_share_detail, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_item_share_detail, parent, false);
 
-        return new ShareCourse(view);
+        return new CourseDetailShareCourse(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        ShareCourse shareCourse = (ShareCourse) holder;
-        shareCourse.setData(image[position], content[position]);
+        CourseDetailShareCourse courseDetailShareCourse = (CourseDetailShareCourse) holder;
+        courseDetailShareCourse.setData(image[position], content[position]);
 
     }
 

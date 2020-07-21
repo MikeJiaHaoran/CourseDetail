@@ -14,14 +14,14 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.coursedetail.R;
 
-public class ShareCourse extends RecyclerView.ViewHolder {
+public class CourseDetailShareCourse extends RecyclerView.ViewHolder {
 
     private ImageView imShareDetail;
     private TextView tvShareDetail;
     private ConstraintLayout clShareDetail;
     private View itemView;
 
-    public ShareCourse(@NonNull View itemView) {
+    public CourseDetailShareCourse(@NonNull View itemView) {
         super(itemView);
         this.itemView = itemView;
         imShareDetail = itemView.findViewById(R.id.im_share_detail);
