@@ -13,7 +13,7 @@ import com.example.coursedetail.Entity.CourseDetailService2;
 import com.example.coursedetail.Entity.CourseDetailTitleImage;
 import com.example.coursedetail.Entity.CourseDetailWebview;
 import com.example.coursedetail.Entity.CourseDetailTitleInfo;
-import com.example.coursedetail.Entity.CourseDetailStudentEvaluate;
+import com.example.coursedetail.Entity.CourseDetailOneStudentEvaluate;
 import com.example.coursedetail.Entity.CourseDetailStudentEvaluateMore;
 import com.example.coursedetail.Entity.CourseDetailStudentsEvaluate;
 import com.example.coursedetail.R;
@@ -74,7 +74,7 @@ public class CourseDetailAdapter extends RecyclerView.Adapter {
         else if (viewType == TYPE_Student) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_item_student_evaluate, parent, false);
 
-            return new CourseDetailStudentEvaluate(view);
+            return new CourseDetailOneStudentEvaluate(view);
         }
         else if (viewType == TYPE_More) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_item_evaluate_more, parent, false);
@@ -122,9 +122,9 @@ public class CourseDetailAdapter extends RecyclerView.Adapter {
             courseDetailStudentsEvaluate.setData();
         }
 
-        if (holder instanceof CourseDetailStudentEvaluate) {
-            CourseDetailStudentEvaluate courseDetailStudentEvaluate = (CourseDetailStudentEvaluate) holder;
-            courseDetailStudentEvaluate.setData();
+        if (holder instanceof CourseDetailOneStudentEvaluate) {
+            CourseDetailOneStudentEvaluate courseDetailOneStudentEvaluate = (CourseDetailOneStudentEvaluate) holder;
+            courseDetailOneStudentEvaluate.setData();
         }
         if (holder instanceof CourseDetailLiveOutline) {
            CourseDetailLiveOutline courseDetailLiveOutline = (CourseDetailLiveOutline) holder;
