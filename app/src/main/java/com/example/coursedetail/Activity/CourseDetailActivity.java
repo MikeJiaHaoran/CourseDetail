@@ -1,4 +1,4 @@
-package com.example.coursedetail;
+package com.example.coursedetail.Activity;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.ColorDrawable;
@@ -25,16 +25,15 @@ import com.example.coursedetail.Adapter.CourseDetailAdapter;
 import com.example.coursedetail.Entity.OnUnDoubleClickListener;
 import com.example.coursedetail.Fragment.ServiceDialogFragment;
 import com.example.coursedetail.Fragment.StudentEvaluateDialogFragment;
+import com.example.coursedetail.R;
 
-public class MainActivity extends AppCompatActivity {
+public class CourseDetailActivity extends AppCompatActivity {
     private RecyclerView recycler_viewCourseDetail;
     private TextView tvService;
     private TextView tvShoppingCart;
     private TextView tvJoinShoppingCart;
     private TextView tvRegister;
     private PopupWindow popUpWindow;
-    private ImageView imBackButton;
-    private ImageView imShareButton;
     private View contentView;
 
     @Override
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_course_detail);
         init();
         setAdapter();
 
@@ -57,28 +56,28 @@ public class MainActivity extends AppCompatActivity {
         tvService.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
             public void onUnDoubleClick(View v) {
-                Toast.makeText(MainActivity.this, "已经联系客服", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CourseDetailActivity.this, "已经联系客服", Toast.LENGTH_SHORT).show();
             }
         });
 
         tvShoppingCart.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
             public void onUnDoubleClick(View v) {
-                Toast.makeText(MainActivity.this, "已经加入购物车", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CourseDetailActivity.this, "已经加入购物车", Toast.LENGTH_SHORT).show();
             }
         });
 
         tvJoinShoppingCart.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
             public void onUnDoubleClick(View v) {
-                Toast.makeText(MainActivity.this, "加入购物车", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CourseDetailActivity.this, "加入购物车", Toast.LENGTH_SHORT).show();
             }
         });
 
         tvRegister.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
             public void onUnDoubleClick(View v) {
-                Toast.makeText(MainActivity.this, "已经报名成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CourseDetailActivity.this, "已经报名成功", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -172,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint({"ResourceAsColor", "InflateParams"})
     public void setPopupWindow(int height) {
-        contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.fragment_service_detail, null);
+        contentView = LayoutInflater.from(CourseDetailActivity.this).inflate(R.layout.fragment_service_detail, null);
         popUpWindow =  new PopupWindow(contentView,
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 height);

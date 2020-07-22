@@ -18,6 +18,7 @@ import com.example.coursedetail.Entity.CourseDetailStudentEvaluateMore;
 import com.example.coursedetail.Entity.CourseDetailStudentsEvaluate;
 import com.example.coursedetail.R;
 
+import java.io.PipedOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,6 +35,8 @@ public class CourseDetailAdapter extends RecyclerView.Adapter {
     private static final int TYPE_WEB = 8;
     private List<Integer> data = new ArrayList<>();
     private List<Integer> images1 = new ArrayList<>();
+    private boolean studentsFlag = false;
+    private boolean oneStudentFlag = false;
 
     public CourseDetailAdapter() {
         Integer [] array = {R.array.title_image,R.array.item1, R.array.item2, R.array.item3, R.array.item_students, R.array.item_student_detail,
@@ -72,7 +75,7 @@ public class CourseDetailAdapter extends RecyclerView.Adapter {
             return new CourseDetailStudentsEvaluate(view);
         }
         else if (viewType == TYPE_Student) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_item_student_evaluate, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_item_one_student_evaluate, parent, false);
 
             return new CourseDetailOneStudentEvaluate(view);
         }
@@ -98,39 +101,41 @@ public class CourseDetailAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof CourseDetailTitleImage) {
+        if (getItemViewType(position) == TYPE_IMAGE) {
             CourseDetailTitleImage courseDetailTitleImage = (CourseDetailTitleImage) holder;
             courseDetailTitleImage.setData(images1);
         }
 
-        if (holder instanceof CourseDetailTitleInfo) {
+        if (getItemViewType(position) == TYPE_INFO) {
             CourseDetailTitleInfo courseDetailTitleInfo = (CourseDetailTitleInfo) holder;
             courseDetailTitleInfo.setData();
         }
 
-        if (holder instanceof CourseDetailService1) {
+        if (getItemViewType(position) == TYPE_SERVICE1) {
             CourseDetailService1 courseDetailService1 = (CourseDetailService1) holder;
             courseDetailService1.setData();
         }
 
-        if (holder instanceof CourseDetailService2) {
+        if (getItemViewType(position) == TYPE_SERVICE2) {
             CourseDetailService2 courseDetailService2 = (CourseDetailService2) holder;
             courseDetailService2.setData();
         }
-        if (holder instanceof CourseDetailStudentsEvaluate) {
+        if (getItemViewType(position) == TYPE_Students && !studentsFlag) {
             CourseDetailStudentsEvaluate courseDetailStudentsEvaluate = (CourseDetailStudentsEvaluate) holder;
             courseDetailStudentsEvaluate.setData();
+            studentsFlag = true;
         }
 
-        if (holder instanceof CourseDetailOneStudentEvaluate) {
+        if (getItemViewType(position) == TYPE_Student && !oneStudentFlag) {
             CourseDetailOneStudentEvaluate courseDetailOneStudentEvaluate = (CourseDetailOneStudentEvaluate) holder;
             courseDetailOneStudentEvaluate.setData();
+            oneStudentFlag = true;
         }
-        if (holder instanceof CourseDetailLiveOutline) {
+        if (getItemViewType(position) == TYPE_OUTLINE) {
            CourseDetailLiveOutline courseDetailLiveOutline = (CourseDetailLiveOutline) holder;
            courseDetailLiveOutline.setData();
         }
-        if (holder instanceof CourseDetailWebview) {
+        if (getItemViewType(position) == TYPE_WEB) {
             CourseDetailWebview courseDetailWebview = (CourseDetailWebview) holder;
             courseDetailWebview.setData();
         }
