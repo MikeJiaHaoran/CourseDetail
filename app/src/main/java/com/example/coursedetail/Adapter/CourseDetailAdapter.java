@@ -35,8 +35,8 @@ public class CourseDetailAdapter extends RecyclerView.Adapter {
     private static final int TYPE_WEB = 8;
     private List<Integer> data = new ArrayList<>();
     private List<Integer> images1 = new ArrayList<>();
-    private boolean studentsFlag = false;
-    private boolean oneStudentFlag = false;
+   // private boolean studentsFlag = false;
+   // private boolean oneStudentFlag = false;
 
     public CourseDetailAdapter() {
         Integer [] array = {R.array.title_image,R.array.item1, R.array.item2, R.array.item3, R.array.item_students, R.array.item_student_detail,
@@ -120,16 +120,16 @@ public class CourseDetailAdapter extends RecyclerView.Adapter {
             CourseDetailService2 courseDetailService2 = (CourseDetailService2) holder;
             courseDetailService2.setData();
         }
-        if (getItemViewType(position) == TYPE_Students && !studentsFlag) {
+        if (getItemViewType(position) == TYPE_Students) {
             CourseDetailStudentsEvaluate courseDetailStudentsEvaluate = (CourseDetailStudentsEvaluate) holder;
             courseDetailStudentsEvaluate.setData();
-            studentsFlag = true;
+            //studentsFlag = true;
         }
 
-        if (getItemViewType(position) == TYPE_Student && !oneStudentFlag) {
+        if (getItemViewType(position) == TYPE_Student) {
             CourseDetailOneStudentEvaluate courseDetailOneStudentEvaluate = (CourseDetailOneStudentEvaluate) holder;
             courseDetailOneStudentEvaluate.setData();
-            oneStudentFlag = true;
+           // oneStudentFlag = true;
         }
         if (getItemViewType(position) == TYPE_OUTLINE) {
            CourseDetailLiveOutline courseDetailLiveOutline = (CourseDetailLiveOutline) holder;

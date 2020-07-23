@@ -9,9 +9,12 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.coursedetail.Interface.APIService;
 import com.example.coursedetail.Model.LatestNews;
 import com.example.coursedetail.Model.Stories;
 import com.example.coursedetail.Model.TopStories;
@@ -25,11 +28,16 @@ import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkActivity extends AppCompatActivity {
 
-    public static final String URL = "https://news-at.zhihu.com/api/3/news/latest";
+    public static final String URL = "https://news-at.zhihu.com/api/3/";
     private static final int COMPLETED = 1;
     private FlexboxLayout flexboxLayout;
 
@@ -60,12 +68,49 @@ public class NetworkActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OkHttpClient client = new OkHttpClient();
+
+                //创建Retrfit
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                APIService apiService = retrofit.create(APIService.class);
+                //获取Call对象
+                Call<ResponseBody> call = apiService.get("latest");
+
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                        try{
+                            String responseData = null;
+                            if (response.body() != null) {
+                                responseData = response.body().string();
+                                Message message = new Message();
+                                message.what = COMPLETED;
+                                message.obj = responseData;
+                                handler.sendMessage(message);
+                            }
+                            //Toast.makeText(NetworkActivity.this, responseData, Toast.LENGTH_SHORT).show();
+
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                        Log.e("onFailure", t.toString());
+                    }
+                });
+
+              /*  OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
                         .url(URL)
                         .get()
-                        .build();
-                try{
+                        .build();*/
+               /* try{
                     Response response = client.newCall(request).execute();
                     String responseData = null;
                     if (response.body() != null) {
@@ -78,7 +123,7 @@ public class NetworkActivity extends AppCompatActivity {
 
                 }catch (Exception e){
                     e.printStackTrace();
-                }
+                }*/
             }
         }).start();
 
@@ -139,24 +184,4 @@ public class NetworkActivity extends AppCompatActivity {
         }
 
     }
-
-   /* public String getJsonMessage() {
-        OkHttpClient client = new OkHttpClient.Builder().build();
-
-        Request request = new Request.Builder().url(URL).build();
-        try {
-            Response response = client.newCall(request).execute();
-            String responseData = null;
-            if (response.body() != null) {
-                responseData = response.body().string();
-            }
-
-            return responseData;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }*/
 }

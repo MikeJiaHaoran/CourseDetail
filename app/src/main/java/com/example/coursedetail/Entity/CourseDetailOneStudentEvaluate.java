@@ -18,6 +18,8 @@ public class CourseDetailOneStudentEvaluate extends RecyclerView.ViewHolder {
     private TextView tvEvaluateResult;
     private FlexboxLayout flex_box_layoutStudentEvaluate;
     private TextView tvEvaluateContent;
+    private boolean flag;
+
     private View itemView;
 
     public CourseDetailOneStudentEvaluate(@NonNull View itemView) {
@@ -29,28 +31,33 @@ public class CourseDetailOneStudentEvaluate extends RecyclerView.ViewHolder {
         tvEvaluateResult = itemView.findViewById(R.id.tv_evaluate_result);
         flex_box_layoutStudentEvaluate = itemView.findViewById(R.id.fl_student_evaluate);
         tvEvaluateContent = itemView.findViewById(R.id.tv_evaluate_content);
+        flag = false;
     }
 
     @SuppressLint("ResourceAsColor")
     public void setData() {
-        String[] content = itemView.getContext().getResources().getStringArray(R.array.item_student_detail);
-        Glide.with(itemView.getContext()).load(content[0]).into(imStudent);
-        tvStudentName.setText(content[1]);
-        tvEvaluateDate.setText(content[2]);
-        tvEvaluateResult.setText(content[3]);
-        tvEvaluateContent.setText(content[4]);
+        if (!flag) {
+            String[] content = itemView.getContext().getResources().getStringArray(R.array.item_student_detail);
+            Glide.with(itemView.getContext()).load(content[0]).into(imStudent);
+            tvStudentName.setText(content[1]);
+            tvEvaluateDate.setText(content[2]);
+            tvEvaluateResult.setText(content[3]);
+            tvEvaluateContent.setText(content[4]);
 
-        for (int i = 5; i < content.length; i++) {
-            TextView tvEvaluateWord = new TextView(itemView.getContext());
-            tvEvaluateWord.setGravity(Gravity.CENTER);
-            tvEvaluateWord.setText(content[i]);
-            tvEvaluateWord.setTextSize(12);
-            tvEvaluateWord.setTextColor(R.color.greyword);
-            tvEvaluateWord.setBackgroundResource(R.drawable.bg_teacher_detail_evaluation_lable);
-            flex_box_layoutStudentEvaluate.addView(tvEvaluateWord);
-            FlexboxLayout.LayoutParams lp = (FlexboxLayout.LayoutParams) tvEvaluateWord.getLayoutParams();
-            lp.setMargins(24, 24, 0,0);
-            tvEvaluateWord.setLayoutParams(lp);
+            for (int i = 5; i < content.length; i++) {
+                TextView tvEvaluateWord = new TextView(itemView.getContext());
+                tvEvaluateWord.setGravity(Gravity.CENTER);
+                tvEvaluateWord.setText(content[i]);
+                tvEvaluateWord.setTextSize(12);
+                tvEvaluateWord.setTextColor(R.color.greyword);
+                tvEvaluateWord.setBackgroundResource(R.drawable.bg_teacher_detail_evaluation_lable);
+                flex_box_layoutStudentEvaluate.addView(tvEvaluateWord);
+                FlexboxLayout.LayoutParams lp = (FlexboxLayout.LayoutParams) tvEvaluateWord.getLayoutParams();
+                lp.setMargins(24, 24, 0,0);
+                tvEvaluateWord.setLayoutParams(lp);
+            }
+            flag = true;
         }
+
     }
 }
