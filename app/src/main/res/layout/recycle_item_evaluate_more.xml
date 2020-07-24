@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="16dp"
     android:id="@+id/cl_student_more"
-    android:onClick="onClick"
     android:clickable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:focusable="true">

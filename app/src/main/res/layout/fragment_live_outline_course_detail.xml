@@ -34,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/课程大纲"
             android:textColor="#212831"
             android:textSize="16sp"
             android:textStyle="bold"

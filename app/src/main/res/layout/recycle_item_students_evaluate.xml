@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/cl_students_evaluate"
-    android:onClick="onClick"
     android:clickable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:focusable="true">

@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/cl_service1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:onClick="onClick"
     android:clickable="true"
     android:background="@drawable/shape_top_line_f3f3f4_1dp"
     android:focusable="true"
