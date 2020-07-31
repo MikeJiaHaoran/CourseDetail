@@ -7,7 +7,7 @@ import android.webkit.WebView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.coursedetail.model.course.CourseDetail;
+import com.example.coursedetail.model.courseDetail.CourseDetail;
 import com.example.coursedetail.R;
 
 public class CourseDetailWebview extends RecyclerView.ViewHolder {

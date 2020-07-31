@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.adapter.CourseServiceDetailAdapter;
 import com.example.coursedetail.entity.OnUnDoubleClickListener;
-import com.example.coursedetail.model.course.CourseDetailService;
+import com.example.coursedetail.model.courseDetail.CourseDetailService;
 import com.example.coursedetail.R;
 
 import java.util.List;

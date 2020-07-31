@@ -26,7 +26,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkActivity extends AppCompatActivity {
 
-    //public static final String URL = "https://news-at.zhihu.com/api/3/";
     private final static String URL = "https://mall.xueersi.com/app/";
     private final static String COOKIE = "tal_token=tal173SPUw2zzHP-9wzSaqj" +
                                         "SgN5nZJKqQ623Um6cNqE5Y0WrfK9rBkpYOGlDMM0J1qJrEeljxjPyCePQt3" +
@@ -34,6 +33,11 @@ public class NetworkActivity extends AppCompatActivity {
                                         "iOpZK7EJRqwZ_OpGj2hJaZrkceahUO1Fv2RvA7UKP155j3gYwA9eXEArQmZMWwDipGTWgL8sl4vipy" +
                                         "-BjRrSD0RL3342SiDTu8Yjp5jg3JJCXZbg-WEmDQpFyedXANBOpdfzVv-xI-vG3l1wJ35rGO-N3-c; X-Requ" +
                                         "est-Id=9ca3a42e1dae17e1bd7fe49fb68e2e0e";
+
+    private final static String COOKIE1 = "tal_token=tal173YC67P2SAww-pdGN4Krcr08zQVNJJ" +
+                                            "y_VsrOPQQMD-xF3-uiWh6HSM23-okxagbEMG-4aG-Nf-9p2gmCnxb3pSDVShjUZCxojDbzrTtBmU3WLCKChuBlzuTamSuf0" +
+                                            "B7r476yPhoZqd8RhoaMYIIdZR3MhWUUrto8vwyjSZiA-9g9oeaClFohCM_wxnxMuuUM9wSSJqjrGhyOXCDYWY8QaRQ-sHWuUzkCe_U0" +
+                                            "AhLmn7V5k_KNZbH34uUCazlLOO93g-XEXIHCm7u5XGl1GWVU262B00bFCQInX5SLqg8RfGYLRMN";
     private static final int COMPLETED = 1;
     private FlexboxLayout flexboxLayout;
 
@@ -61,9 +65,6 @@ public class NetworkActivity extends AppCompatActivity {
     }
 
     private void getJsonMessage(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
 
                 //创建Retrofit
                 Retrofit retrofit = new Retrofit.Builder()
@@ -73,7 +74,7 @@ public class NetworkActivity extends AppCompatActivity {
 
                 APIService apiService = retrofit.create(APIService.class);
                 //获取Call对象
-                Call<ResponseBody> call = apiService.post(COOKIE,"84153", "android");
+                Call<ResponseBody> call = apiService.post(COOKIE1,"-835", "android", "1", "80401", "8");
 
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
@@ -87,8 +88,9 @@ public class NetworkActivity extends AppCompatActivity {
                                 message.obj = responseData;
                                 handler.sendMessage(message);
                             }
-                            //Toast.makeText(NetworkActivity.this, responseData, Toast.LENGTH_SHORT).show();
-                            Log.e("onResponse: ", responseData);
+                            else {
+                                Log.e("onResponse: ", "It is null message");
+                            }
 
 
                         }catch (Exception e){
@@ -102,28 +104,6 @@ public class NetworkActivity extends AppCompatActivity {
                     }
                 });
 
-              /*  OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                        .url(URL)
-                        .get()
-                        .build();*/
-               /* try{
-                    Response response = client.newCall(request).execute();
-                    String responseData = null;
-                    if (response.body() != null) {
-                        responseData = response.body().string();
-                        Message message = new Message();
-                        message.what = COMPLETED;
-                        message.obj = responseData;
-                        handler.sendMessage(message);
-                    }
-
-                }catch (Exception e){
-                    e.printStackTrace();
-                }*/
-            }
-        }).start();
-
     }
 
     @SuppressLint("ResourceAsColor")
@@ -132,57 +112,5 @@ public class NetworkActivity extends AppCompatActivity {
         tvLatestNews.setGravity(Gravity.CENTER);
         tvLatestNews.setText(jsonData);
         flexboxLayout.addView(tvLatestNews);
-      /*  Log.i("Json Data:", jsonData);
-        Gson gson = new Gson();
-        LatestNews latestNews = gson.fromJson(jsonData, LatestNews.class);
-        Log.i("date", latestNews.getDate());
-        List<Stories> stories = latestNews.getStories();
-        List<TopStories> topStories = latestNews.getTopStories();
-
-        for (Stories story : stories) {
-            Log.i("stories", story.getImage_hue());
-        }
-
-        for (TopStories topStory : topStories) {
-            Log.i("topStories", topStory.getImage_hue());
-        }
-
-        TextView tvLatestNews = new TextView(this);
-        tvLatestNews.setGravity(Gravity.CENTER);
-        tvLatestNews.setText(latestNews.getDate());
-        tvLatestNews.setTextSize(12);
-        tvLatestNews.setTextColor(R.color.greyword);
-        tvLatestNews.setBackgroundResource(R.drawable.bg_teacher_detail_evaluation_lable);
-        flexboxLayout.addView(tvLatestNews);
-        FlexboxLayout.LayoutParams lp = (FlexboxLayout.LayoutParams) tvLatestNews.getLayoutParams();
-        lp.setMargins(24, 24, 0,0);
-        tvLatestNews.setLayoutParams(lp);
-
-        for (int i = 0; i < stories.size(); i++) {
-            tvLatestNews = new TextView(this);
-            tvLatestNews.setGravity(Gravity.CENTER);
-            tvLatestNews.setText(stories.get(i).getHint());
-            tvLatestNews.setTextSize(12);
-            tvLatestNews.setTextColor(R.color.greyword);
-            tvLatestNews.setBackgroundResource(R.drawable.bg_teacher_detail_evaluation_lable);
-            flexboxLayout.addView(tvLatestNews);
-            lp = (FlexboxLayout.LayoutParams) tvLatestNews.getLayoutParams();
-            lp.setMargins(24, 24, 0,0);
-            tvLatestNews.setLayoutParams(lp);
-        }
-
-        for (int i = 0; i < topStories.size(); i++) {
-            tvLatestNews = new TextView(this);
-            tvLatestNews.setGravity(Gravity.CENTER);
-            tvLatestNews.setText(topStories.get(i).getHint());
-            tvLatestNews.setTextSize(12);
-            tvLatestNews.setTextColor(R.color.greyword);
-            tvLatestNews.setBackgroundResource(R.drawable.bg_teacher_detail_evaluation_lable);
-            flexboxLayout.addView(tvLatestNews);
-            lp = (FlexboxLayout.LayoutParams) tvLatestNews.getLayoutParams();
-            lp.setMargins(24, 24, 0,0);
-            tvLatestNews.setLayoutParams(lp);
-        }*/
-
     }
 }

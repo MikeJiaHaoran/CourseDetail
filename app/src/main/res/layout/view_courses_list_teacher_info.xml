@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/iv_teacher"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_teacher_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:lineSpacingExtra="12dp"
+        android:textColor="#878E9A"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/iv_teacher"
+        app:layout_constraintTop_toTopOf="@id/iv_teacher" />
+
+    <TextView
+        android:id="@+id/tv_teacher_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="2dp"
+        android:lineSpacingExtra="12dp"
+        android:textColor="#212831"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/iv_teacher"
+        app:layout_constraintTop_toBottomOf="@id/tv_teacher_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         tvHomeNetwork.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
             public void onUnDoubleClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, NetworkActivity.class);
+                Intent intent = new Intent(HomeActivity.this, CourseListActivity.class);
                 startActivity(intent);
             }
         });

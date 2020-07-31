@@ -9,9 +9,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.fragment.ServiceDialogFragment;
-import com.example.coursedetail.model.course.CourseDetail;
-import com.example.coursedetail.model.course.CourseDetailService;
-import com.example.coursedetail.model.course.ServicesList;
+import com.example.coursedetail.model.courseDetail.CourseDetail;
+import com.example.coursedetail.model.courseDetail.CourseDetailService;
+import com.example.coursedetail.model.courseDetail.ServicesList;
 import com.example.coursedetail.R;
 
 import java.util.ArrayList;

@@ -8,8 +8,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.fragment.StudentEvaluateDialogFragment;
-import com.example.coursedetail.model.course.CourseDetail;
-import com.example.coursedetail.model.course.Evaluation;
+import com.example.coursedetail.model.courseDetail.CourseDetail;
+import com.example.coursedetail.model.courseDetail.Evaluation;
 import com.example.coursedetail.R;
 
 public class CourseDetailStudentEvaluateMore extends RecyclerView.ViewHolder {

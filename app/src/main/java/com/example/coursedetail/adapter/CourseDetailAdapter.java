@@ -16,7 +16,7 @@ import com.example.coursedetail.entity.CourseDetailTitleInfo;
 import com.example.coursedetail.entity.CourseDetailOneStudentEvaluate;
 import com.example.coursedetail.entity.CourseDetailStudentEvaluateMore;
 import com.example.coursedetail.entity.CourseDetailStudentsEvaluate;
-import com.example.coursedetail.model.course.CourseDetail;
+import com.example.coursedetail.model.courseDetail.CourseDetail;
 import com.example.coursedetail.R;
 
 import java.util.ArrayList;

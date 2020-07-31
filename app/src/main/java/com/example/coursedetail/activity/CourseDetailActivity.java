@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coursedetail.adapter.CourseDetailAdapter;
 import com.example.coursedetail.entity.OnUnDoubleClickListener;
 import com.example.coursedetail.Interface.APIService;
-import com.example.coursedetail.model.course.CourseDetail;
+import com.example.coursedetail.model.courseDetail.CourseDetail;
 import com.example.coursedetail.R;
 import com.google.gson.Gson;
 

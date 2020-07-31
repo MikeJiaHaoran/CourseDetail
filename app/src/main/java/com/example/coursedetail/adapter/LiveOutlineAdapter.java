@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.entity.LiveOutlineDetail1;
 import com.example.coursedetail.entity.LiveOutlineDetail2;
-import com.example.coursedetail.model.course.LiveSyllabus;
+import com.example.coursedetail.model.courseDetail.LiveSyllabus;
 import com.example.coursedetail.R;
 
 public class LiveOutlineAdapter extends RecyclerView.Adapter {
