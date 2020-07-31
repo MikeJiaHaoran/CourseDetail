@@ -1,6 +1,7 @@
 package com.example.coursedetail.entity;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +17,10 @@ import com.example.coursedetail.model.courseDetail.EvaluateTag;
 import com.example.coursedetail.model.courseDetail.Evaluation;
 import com.example.coursedetail.R;
 import com.google.android.flexbox.FlexboxLayout;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -41,8 +46,10 @@ public class CourseDetailStudentsEvaluate extends RecyclerView.ViewHolder {
     public void setData(final CourseDetail courseDetail) {
         if (!flag) {
             //String[] content = itemView.getContext().getResources().getStringArray(R.array.item_students);
-            Evaluation evaluation = courseDetail.getResult().getData().getEvaluation();
-            List<EvaluateTag> evaluateTagList = courseDetail.getResult().getData().getEvaluation().getEvaluateTag();
+            Gson gson = new Gson();
+           // Log.e("evaluate data", courseDetail.getResult().getData().getEvaluation().toString());
+            Evaluation evaluation = gson.fromJson(new Gson().toJson(courseDetail.getResult().getData().getEvaluation()), Evaluation.class);
+            List<EvaluateTag> evaluateTagList = evaluation.getEvaluateTag();
             tvEvaluateTitle.setText(evaluation.getTitle());
             tvEvaluatePercent.setText(evaluation.getEvaluationRate());
 
@@ -64,7 +71,8 @@ public class CourseDetailStudentsEvaluate extends RecyclerView.ViewHolder {
         clStudentsEvaluate.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
             public void onUnDoubleClick(View v) {
-                Evaluation evaluation = courseDetail.getResult().getData().getEvaluation();
+                Gson gson = new Gson();
+                Evaluation evaluation = gson.fromJson(new Gson().toJson(courseDetail.getResult().getData().getEvaluation()), Evaluation.class);
                 StudentEvaluateDialogFragment studentEvaluateDialogFragment = new StudentEvaluateDialogFragment(evaluation.getMoreEvaluation());
                 studentEvaluateDialogFragment.show(((AppCompatActivity)itemView.getContext()).getSupportFragmentManager(), "");
             }

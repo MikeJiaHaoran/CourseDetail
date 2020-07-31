@@ -1,5 +1,6 @@
 package com.example.coursedetail.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class LiveOutlineAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        if (viewType < liveSyllabus.getList().size() - liveSyllabus.getCount()) {
+        if (viewType == 0 || viewType == 1) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_item_live_outline_detail1, parent, false);
             return new LiveOutlineDetail1(view);
         }
@@ -42,12 +43,13 @@ public class LiveOutlineAdapter extends RecyclerView.Adapter {
 
         if (holder instanceof LiveOutlineDetail1) {
             LiveOutlineDetail1 liveOutlineDetail1 = (LiveOutlineDetail1) holder;
-            liveOutlineDetail1.setData(liveSyllabus.getList().get(position).getSerialNo(), liveSyllabus.getList().get(position).getScheduleName());
+            Log.e("Size", "onBindViewHolder: " + liveSyllabus.toString());
+            liveOutlineDetail1.setData(liveSyllabus.getList().get(0).getList().get(position).getSerialNo(), liveSyllabus.getList().get(0).getList().get(position).getScheduleName());
         }
         if (holder instanceof LiveOutlineDetail2) {
             LiveOutlineDetail2 liveOutlineDetail2 = (LiveOutlineDetail2) holder;
-            liveOutlineDetail2.setData(liveSyllabus.getList().get(position).getSerialNo(), liveSyllabus.getList().get(position).getScheduleName(),
-            liveSyllabus.getList().get(position).getScheduleTime());
+            liveOutlineDetail2.setData(liveSyllabus.getList().get(0).getList().get(position).getSerialNo(), liveSyllabus.getList().get(0).getList().get(position).getScheduleName(),
+            liveSyllabus.getList().get(0).getList().get(position).getScheduleTime());
         }
 
     }

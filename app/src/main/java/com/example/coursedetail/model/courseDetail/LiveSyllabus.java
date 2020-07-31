@@ -7,7 +7,7 @@ public class LiveSyllabus {
     private int showSyllabusStatus;
     private int count;
     private String desc;
-    private List<LiveSyllabusList> list;
+    private List<LiveSyllabusList2> list;
 
     public String getName() {
         return name;
@@ -41,11 +41,22 @@ public class LiveSyllabus {
         this.desc = desc;
     }
 
-    public List<LiveSyllabusList> getList() {
+    public List<LiveSyllabusList2> getList() {
         return list;
     }
 
-    public void setList(List<LiveSyllabusList> list) {
+    public void setList(List<LiveSyllabusList2> list) {
         this.list = list;
+    }
+
+    @Override
+    public String toString() {
+        return "LiveSyllabus{" +
+                "name='" + name + '\'' +
+                ", showSyllabusStatus=" + showSyllabusStatus +
+                ", count=" + count +
+                ", desc='" + desc + '\'' +
+                ", list=" + list +
+                '}';
     }
 }

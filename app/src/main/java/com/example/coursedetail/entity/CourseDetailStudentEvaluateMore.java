@@ -11,6 +11,7 @@ import com.example.coursedetail.fragment.StudentEvaluateDialogFragment;
 import com.example.coursedetail.model.courseDetail.CourseDetail;
 import com.example.coursedetail.model.courseDetail.Evaluation;
 import com.example.coursedetail.R;
+import com.google.gson.Gson;
 
 public class CourseDetailStudentEvaluateMore extends RecyclerView.ViewHolder {
 
@@ -22,7 +23,8 @@ public class CourseDetailStudentEvaluateMore extends RecyclerView.ViewHolder {
         clStudentMore.setOnClickListener(new OnUnDoubleClickListener() {
             @Override
             public void onUnDoubleClick(View v) {
-                Evaluation evaluation = courseDetail.getResult().getData().getEvaluation();
+                Gson gson = new Gson();
+                Evaluation evaluation = gson.fromJson(new Gson().toJson(courseDetail.getResult().getData().getEvaluation()), Evaluation.class);
                 StudentEvaluateDialogFragment studentEvaluateDialogFragment = new StudentEvaluateDialogFragment(evaluation.getMoreEvaluation());
                 studentEvaluateDialogFragment.show(((AppCompatActivity)itemView.getContext()).getSupportFragmentManager(), "");
             }

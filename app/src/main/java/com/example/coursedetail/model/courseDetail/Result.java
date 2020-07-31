@@ -28,4 +28,13 @@ public class Result {
     public void setData(Data data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "status=" + status +
+                ", rows=" + rows +
+                ", data=" + data +
+                '}';
+    }
 }

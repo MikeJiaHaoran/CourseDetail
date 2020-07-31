@@ -2,6 +2,8 @@ package com.example.coursedetail.model.courseDetail;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Data {
     private String courseId;
     private String courseName;
@@ -12,8 +14,9 @@ public class Data {
     private Difficulty difficulty;
     private Price price;
     private Summary summary;
-    private Evaluation evaluation;
-    private LiveSyllabus liveSyllabus;
+    private Object evaluation;
+    private LiveSyllabus syllabus;
+    private GroupOnCourseInfo grouponCourseInfo;
 
     @SerializedName("class")
     private Class courseClass;
@@ -116,19 +119,48 @@ public class Data {
         this.summary = summary;
     }
 
-    public Evaluation getEvaluation() {
-        return evaluation;
-    }
-
-    public void setEvaluation(Evaluation evaluation) {
-        this.evaluation = evaluation;
-    }
-
     public LiveSyllabus getLiveSyllabus() {
-        return liveSyllabus;
+        return syllabus;
     }
 
     public void setLiveSyllabus(LiveSyllabus liveSyllabus) {
-        this.liveSyllabus = liveSyllabus;
+        this.syllabus = liveSyllabus;
+    }
+
+    public GroupOnCourseInfo getGrouponCourseInfo() {
+        return grouponCourseInfo;
+    }
+
+    public void setGrouponCourseInfo(GroupOnCourseInfo grouponCourseInfo) {
+        this.grouponCourseInfo = grouponCourseInfo;
+    }
+
+    public Object getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(Object evaluation) {
+        this.evaluation = evaluation;
+    }
+
+    @Override
+    public String toString() {
+        return "Data{" +
+                "courseId='" + courseId + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", subtitle='" + subtitle + '\'' +
+                ", category='" + category + '\'' +
+                ", courseType='" + courseType + '\'' +
+                ", schoolTimeName='" + schoolTimeName + '\'' +
+                ", difficulty=" + difficulty +
+                ", price=" + price +
+                ", summary=" + summary +
+                ", evaluation=" + evaluation +
+                ", liveSyllabus=" + syllabus +
+                ", grouponCourseInfo=" + grouponCourseInfo +
+                ", courseClass=" + courseClass +
+                ", activities=" + activities +
+                ", services=" + services +
+                '}';
     }
 }

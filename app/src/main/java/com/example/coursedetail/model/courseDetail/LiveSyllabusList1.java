@@ -1,6 +1,6 @@
 package com.example.coursedetail.model.courseDetail;
 
-public class LiveSyllabusList {
+public class LiveSyllabusList1 {
     private String scheduleId;
     private String scheduleName;
     private String scheduleTime;
@@ -54,5 +54,17 @@ public class LiveSyllabusList {
 
     public void setSerialNo(String serialNo) {
         this.serialNo = serialNo;
+    }
+
+    @Override
+    public String toString() {
+        return "LiveSyllabusList{" +
+                "scheduleId='" + scheduleId + '\'' +
+                ", scheduleName='" + scheduleName + '\'' +
+                ", scheduleTime='" + scheduleTime + '\'' +
+                ", status='" + status + '\'' +
+                ", teacherName='" + teacherName + '\'' +
+                ", serialNo='" + serialNo + '\'' +
+                '}';
     }
 }

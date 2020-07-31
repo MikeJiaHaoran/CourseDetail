@@ -68,7 +68,7 @@ public class LiveOutlineFragment extends DialogFragment {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recycler_viewLiveOutlineCourseDetail.setLayoutManager(layoutManager);
-        LiveOutlineAdapter liveOutlineAdapter = new LiveOutlineAdapter(liveSyllabus, liveSyllabus.getList().size());
+        LiveOutlineAdapter liveOutlineAdapter = new LiveOutlineAdapter(liveSyllabus, liveSyllabus.getList().get(0).getList().size());
         recycler_viewLiveOutlineCourseDetail.setAdapter(liveOutlineAdapter);
 
         ivLiveOutlineBackButton.setOnClickListener(new OnUnDoubleClickListener() {

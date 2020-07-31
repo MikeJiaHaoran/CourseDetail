@@ -1,5 +1,6 @@
 package com.example.coursedetail.entity;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.media.Rating;
 import android.view.View;
@@ -7,10 +8,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.R;
 import com.example.coursedetail.View.CoursesListTeacherInfo;
+import com.example.coursedetail.activity.CourseDetailActivity;
+import com.example.coursedetail.activity.CourseListActivity;
 import com.example.coursedetail.model.coursesList.CoursesList;
 
 import org.w3c.dom.Text;
@@ -27,6 +31,8 @@ public class CoursesListTeacherInformation extends RecyclerView.ViewHolder {
     private TextView tvDescNum;
     private TextView tvResaleMoney;
     private TextView tvOriginalSaleMoney;
+    private ConstraintLayout clCourseListInfo;
+    private View itemView;
 
     public CoursesListTeacherInformation(@NonNull View itemView) {
         super(itemView);
@@ -40,9 +46,11 @@ public class CoursesListTeacherInformation extends RecyclerView.ViewHolder {
         tvDescNum = itemView.findViewById(R.id.tv_desc_nums);
         tvResaleMoney = itemView.findViewById(R.id.tv_resale_money);
         tvOriginalSaleMoney = itemView.findViewById(R.id.tv_original_sale_money);
+        clCourseListInfo = itemView.findViewById(R.id.cl_course_list_info);
+        this.itemView = itemView;
     }
 
-    public void setData(CoursesList coursesList) {
+    public void setData(final CoursesList coursesList) {
 
         tvCoursesName.setText(coursesList.getCourseName());
 
@@ -79,6 +87,15 @@ public class CoursesListTeacherInformation extends RecyclerView.ViewHolder {
             tvOriginalSaleMoney.setText(String.format("%s%s%s", coursesList.getPrice().getPrefix(), coursesList.getPrice().getOriginPrice(), coursesList.getPrice().getSuffix()));
             tvOriginalSaleMoney.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG); //中划线
         }
+
+        clCourseListInfo.setOnClickListener(new OnUnDoubleClickListener() {
+            @Override
+            public void onUnDoubleClick(View v) {
+                Intent intent = new Intent(itemView.getContext(), CourseDetailActivity.class);
+                intent.putExtra("courseId", coursesList.getCourseId());
+                itemView.getContext().startActivity(intent);
+            }
+        });
 
     }
 }

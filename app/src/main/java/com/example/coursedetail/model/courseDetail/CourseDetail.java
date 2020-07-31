@@ -10,4 +10,11 @@ public class CourseDetail {
     public void setResult(Result result) {
         this.result = result;
     }
+
+    @Override
+    public String toString() {
+        return "CourseDetail{" +
+                "result=" + result +
+                '}';
+    }
 }

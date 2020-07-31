@@ -1,6 +1,7 @@
 package com.example.coursedetail.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,6 +51,7 @@ public class CourseDetailActivity extends AppCompatActivity {
     private PopupWindow popUpWindow;
     private View contentView;
     private static final int COMPLETED = 1;
+    private String courseId;
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
@@ -57,7 +59,9 @@ public class CourseDetailActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             if (msg.what == COMPLETED) {
                 Gson gson = new Gson();
+                Log.e("TAG", courseId );
                 CourseDetail courseDetail = gson.fromJson((String) msg.obj, CourseDetail.class);
+                Log.e("jsonlist", "handleMessage: " + courseDetail.getResult().getData().getLiveSyllabus().getList().toString());
                 setAdapter(courseDetail);
             }
         }
@@ -69,9 +73,18 @@ public class CourseDetailActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_course_detail);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
         init();
-        getJsonMessage();
-       // setAdapter();
+        if (bundle != null) {
+            getJsonMessage(bundle.getString("courseId"));
+        }
+        else {
+            Log.e("Error", "The course ID is null!");
+        }
+        // setAdapter();
 
         Drawable dService = getResources().getDrawable(R.drawable.coursedetails_customerservice_icon);
         dService.setBounds(0, 0, 80, 80);
@@ -180,7 +193,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         startActivity(intent);*/
     }
 
-    private void getJsonMessage(){
+    private void getJsonMessage(String courseId){
                 //创建Retrofit
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(URL)
@@ -189,7 +202,8 @@ public class CourseDetailActivity extends AppCompatActivity {
 
                 APIService apiService = retrofit.create(APIService.class);
                 //获取Call对象
-                Call<ResponseBody> call = apiService.post(COOKIE,"84153", "android");
+                Call<ResponseBody> call = apiService.post(COOKIE, courseId, "android","80701");
+                this.courseId = courseId;
 
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
