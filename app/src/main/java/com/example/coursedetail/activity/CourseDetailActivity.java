@@ -36,7 +36,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CourseDetailActivity extends AppCompatActivity {
-    private final static String URL = "https://mall.xueersi.com/app/";
+    private final static String URL = "";
     private final static String COOKIE = "tal_token=tal173SPUw2zzHP-9wzSaqj" +
                                         "SgN5nZJKqQ623Um6cNqE5Y0WrfK9rBkpYOGlDMM0J1qJrEeljxjPyCePQt3" +
                                         "M1loxmEBweD2wlpEAmM2jZyRoZ5l-HMG4vgWYOAjIxUH2UeFvAwtmh5FQ16KfPbYjeGnFs" +
