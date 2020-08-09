@@ -28,6 +28,20 @@
 
     </style>
 
+    <!--控制dialog进出动画-->
+
+    <style name="course_list_selection_animation" parent="android:Animation">
+
+        <item name="android:windowEnterAnimation">@animator/course_list_selection_enter</item>
+
+        <!-- 进入时的动画 -->
+
+        <item name="android:windowExitAnimation">@animator/course_list_selection_exit</item>
+
+        <!-- 退出时的动画 -->
+
+    </style>
+
     <style name="live_outline_animation" parent="android:Animation">
 
         <item name="android:windowEnterAnimation">@animator/live_outline_enter</item>
