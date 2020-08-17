@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.adapter.LiveOutlineAdapter;
 import com.example.coursedetail.entity.OnUnDoubleClickListener;
-import com.example.coursedetail.model.courseDetail.LiveSyllabus;
+import com.example.coursedetail.model.coursedetail.LiveSyllabus;
 import com.example.coursedetail.R;
 
 public class LiveOutlineFragment extends DialogFragment {

@@ -8,8 +8,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.fragment.StudentEvaluateDialogFragment;
-import com.example.coursedetail.model.courseDetail.CourseDetail;
-import com.example.coursedetail.model.courseDetail.Evaluation;
+import com.example.coursedetail.model.coursedetail.CourseDetail;
+import com.example.coursedetail.model.coursedetail.Evaluation;
 import com.example.coursedetail.R;
 import com.google.gson.Gson;
 

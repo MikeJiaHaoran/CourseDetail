@@ -1,30 +1,26 @@
 package com.example.coursedetail.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.Interface.APIService;
 import com.example.coursedetail.R;
-import com.example.coursedetail.adapter.CourseDetailAdapter;
 import com.example.coursedetail.adapter.CoursesListAdapter;
 import com.example.coursedetail.entity.OnUnDoubleClickListener;
 import com.example.coursedetail.fragment.CourseListSelectionFragment;
-import com.example.coursedetail.model.courseDetail.CourseDetail;
-import com.example.coursedetail.model.coursesList.CoursesList;
-import com.example.coursedetail.model.coursesList.JsonResultCourses;
+import com.example.coursedetail.model.courseslist.CoursesList;
+import com.example.coursedetail.model.courseslist.JsonResultCourses;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -40,10 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CourseListActivity extends AppCompatActivity {
 
     private final static String URL = "https://mall.xueersi.com/app/";
-    private final static String COOKIE = "tal_token=tal173YC67P2SAww-pdGN4Krcr08zQVNJJ" +
-                                        "y_VsrOPQQMD-xF3-uiWh6HSM23-okxagbEMG-4aG-Nf-9p2gmCnxb3pSDVShjUZCxojDbzrTtBmU3WLCKChuBlzuTamSuf0" +
-                                        "B7r476yPhoZqd8RhoaMYIIdZR3MhWUUrto8vwyjSZiA-9g9oeaClFohCM_wxnxMuuUM9wSSJqjrGhyOXCDYWY8QaRQ-sHWuUzkCe_U0" +
-                                        "AhLmn7V5k_KNZbH34uUCazlLOO93g-XEXIHCm7u5XGl1GWVU262B00bFCQInX5SLqg8RfGYLRMN";
+    private final static String COOKIE = "tal_token=tal173YC67P2SAww-pdGN4Krcr08zQVNJJy_VsrOPQQMD-xF3-uiWh6HSM23-okxagbEMG-4aG-Nf-9p2gmCnxb3pSDVShjUZCxojDbzrTtBmU3WLCKChuBlzuTamSuf0B7r476yPhoZqd8RhoaMYIIdZR3MhWUUrto8vwyjSZiA-9g9oeaClFohCM_wxnxMuuUM9wSSJqjrGhyOXCDYWY8QaRQ-sHWuUzkCe_U0AhLmn7V5k_KNZbH34uUCazlLOO93g-XEXIHCm7u5XGl1GWVU262B00bFCQInX5SLqg8RfGYLRMN";
     private static final int COMPLETED = 1;
     private RecyclerView recycler_viewCoursesList;
     private ConstraintLayout clTitleLayout;

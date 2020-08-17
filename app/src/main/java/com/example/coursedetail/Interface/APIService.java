@@ -18,7 +18,7 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("Course/detail")
-    Call<ResponseBody> post(@Header("Cookie") String Cookie, @Field("courseId") String courseId, @Field("systemName") String systemName,
+    Call<ResponseBody> post(@Field("identifierForClient") String identifierForClient, @Field("courseId") String courseId, @Field("systemName") String systemName,
                             @Field("appVersionNumber") String versionNumber);
 
 

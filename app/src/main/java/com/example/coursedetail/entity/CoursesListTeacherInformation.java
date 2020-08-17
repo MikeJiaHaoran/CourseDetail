@@ -2,7 +2,6 @@ package com.example.coursedetail.entity;
 
 import android.content.Intent;
 import android.graphics.Paint;
-import android.media.Rating;
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -14,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coursedetail.R;
 import com.example.coursedetail.View.CoursesListTeacherInfo;
 import com.example.coursedetail.activity.CourseDetailActivity;
-import com.example.coursedetail.activity.CourseListActivity;
-import com.example.coursedetail.model.coursesList.CoursesList;
+import com.example.coursedetail.model.coursedetail.Evaluation;
+import com.example.coursedetail.model.courseslist.Counselor;
+import com.example.coursedetail.model.courseslist.CoursesList;
+import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
+import java.util.List;
 
 public class CoursesListTeacherInformation extends RecyclerView.ViewHolder {
 
@@ -67,10 +68,13 @@ public class CoursesListTeacherInformation extends RecyclerView.ViewHolder {
             viewTeacherInfo.setTeacherName(coursesList.getChineseTeacher().get(0).getName());
         }
 
-        if (coursesList.getClassCourses().getCounselor() != null) {
-            viewAssistTeacherInfo.setImage(coursesList.getClassCourses().getCounselor().getAvatars().get(0));
-            viewAssistTeacherInfo.setTeacherTitle(coursesList.getClassCourses().getCounselor().getTypeName());
-            viewAssistTeacherInfo.setTeacherName(coursesList.getClassCourses().getCounselor().getName());
+        Object object = coursesList.getClassCourses().getCounselor();
+        if (!(object instanceof List)) {
+            Gson gson = new Gson();
+            Counselor counselor= gson.fromJson(new Gson().toJson(object), Counselor.class);
+            viewAssistTeacherInfo.setImage(counselor.getAvatars().get(0));
+            viewAssistTeacherInfo.setTeacherTitle(counselor.getTypeName());
+            viewAssistTeacherInfo.setTeacherName(counselor.getName());
         }
 
         if (coursesList.getForeignTeacher() != null && coursesList.getForeignTeacher().size() > 0) {

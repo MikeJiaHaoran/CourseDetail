@@ -23,7 +23,6 @@ import androidx.fragment.app.DialogFragment;
 import com.example.coursedetail.R;
 import com.example.coursedetail.adapter.CourseListTitleSelectionAdapter;
 import com.example.coursedetail.entity.OnUnDoubleClickListener;
-import com.google.android.flexbox.FlexboxLayout;
 
 import java.util.List;
 
@@ -55,7 +54,7 @@ public class CourseListSelectionFragment extends DialogFragment {
 
             window.setAttributes(params);
             getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            //window.setWindowAnimations(R.style.course_list_selection_animation);
+            window.setWindowAnimations(R.style.course_list_selection_animation);
         }
         else {
             exit();
@@ -74,7 +73,6 @@ public class CourseListSelectionFragment extends DialogFragment {
 
         View dialogView = inflater.inflate(R.layout.fragment_course_list_selection, container, false);
         GridView gridView = dialogView.findViewById(R.id.gridivew_course_list_select_condition);
-        //gridView.setHorizontalSpacing(8);
         gridView.setVerticalSpacing(32);
         TextView tvResetButton = dialogView.findViewById(R.id.tv_filter_reset_btn);
         TextView tvSureButton = dialogView.findViewById(R.id.tv_filter_sure_btn);

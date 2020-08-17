@@ -17,11 +17,8 @@ import com.example.coursedetail.entity.CourseDetailTitleInfo;
 import com.example.coursedetail.entity.CourseDetailOneStudentEvaluate;
 import com.example.coursedetail.entity.CourseDetailStudentEvaluateMore;
 import com.example.coursedetail.entity.CourseDetailStudentsEvaluate;
-import com.example.coursedetail.model.courseDetail.CourseDetail;
+import com.example.coursedetail.model.coursedetail.CourseDetail;
 import com.example.coursedetail.R;
-import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;

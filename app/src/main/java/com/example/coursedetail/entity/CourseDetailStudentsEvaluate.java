@@ -1,7 +1,6 @@
 package com.example.coursedetail.entity;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -12,15 +11,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.fragment.StudentEvaluateDialogFragment;
-import com.example.coursedetail.model.courseDetail.CourseDetail;
-import com.example.coursedetail.model.courseDetail.EvaluateTag;
-import com.example.coursedetail.model.courseDetail.Evaluation;
+import com.example.coursedetail.model.coursedetail.CourseDetail;
+import com.example.coursedetail.model.coursedetail.EvaluateTag;
+import com.example.coursedetail.model.coursedetail.Evaluation;
 import com.example.coursedetail.R;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
 
 import java.util.List;
 

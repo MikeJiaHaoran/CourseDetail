@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coursedetail.R;
 import com.example.coursedetail.entity.CourseListNoMore;
 import com.example.coursedetail.entity.CoursesListTeacherInformation;
-import com.example.coursedetail.model.coursesList.CoursesList;
+import com.example.coursedetail.model.courseslist.CoursesList;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.coursedetail.model.courseDetail.CourseDetail;
+import com.example.coursedetail.model.coursedetail.CourseDetail;
 import com.example.coursedetail.R;
 
 public class CourseDetailTitleInfo extends RecyclerView.ViewHolder {

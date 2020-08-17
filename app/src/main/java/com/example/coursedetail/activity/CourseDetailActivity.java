@@ -12,21 +12,27 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.coursedetail.adapter.CourseDetailAdapter;
 import com.example.coursedetail.entity.OnUnDoubleClickListener;
 import com.example.coursedetail.Interface.APIService;
-import com.example.coursedetail.model.courseDetail.CourseDetail;
+import com.example.coursedetail.fragment.ShareCourseFragment;
+import com.example.coursedetail.model.coursedetail.CourseDetail;
 import com.example.coursedetail.R;
 import com.google.gson.Gson;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -37,12 +43,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CourseDetailActivity extends AppCompatActivity {
     private final static String URL = "https://mall.xueersi.com/app/";
-    private final static String COOKIE = "tal_token=tal173SPUw2zzHP-9wzSaqj" +
-                                        "SgN5nZJKqQ623Um6cNqE5Y0WrfK9rBkpYOGlDMM0J1qJrEeljxjPyCePQt3" +
-                                        "M1loxmEBweD2wlpEAmM2jZyRoZ5l-HMG4vgWYOAjIxUH2UeFvAwtmh5FQ16KfPbYjeGnFs" +
-                                        "iOpZK7EJRqwZ_OpGj2hJaZrkceahUO1Fv2RvA7UKP155j3gYwA9eXEArQmZMWwDipGTWgL8sl4vipy" +
-                                        "-BjRrSD0RL3342SiDTu8Yjp5jg3JJCXZbg-WEmDQpFyedXANBOpdfzVv-xI-vG3l1wJ35rGO-N3-c; X-Requ" +
-                                        "est-Id=9ca3a42e1dae17e1bd7fe49fb68e2e0e";
+    private final static String IDENTIFIERFORCLIENT = "a0894e21-507c-4690-94ff-85cfe2bf181f";
     private RecyclerView recycler_viewCourseDetail;
     private TextView tvService;
     private TextView tvShoppingCart;
@@ -52,6 +53,19 @@ public class CourseDetailActivity extends AppCompatActivity {
     private View contentView;
     private static final int COMPLETED = 1;
     private String courseId;
+    private ImageView imBackButton;
+    private ImageView imShareButton;
+    private ConstraintLayout clCourseDetailTitleSlide;
+    private TextView tvCourseDetailTitleWord;
+    private TextView tvCourseDetailCourse;
+    private TextView tvCourseDetailOutline;
+    private TextView tvCourseDetailDetail;
+    private TextView tvCourseDetailEvaluate;
+    private ImageView imCourseDetailLocation1;
+    private ImageView imCourseDetailLocation2;
+    private ImageView imCourseDetailLocation3;
+    private ImageView imCourseDetailLocation4;
+
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
@@ -122,6 +136,28 @@ public class CourseDetailActivity extends AppCompatActivity {
             }
         });
 
+        clCourseDetailTitleSlide.bringToFront();
+        imBackButton.bringToFront();
+        imShareButton.bringToFront();
+        Glide.with(this).load(R.drawable.icon_teacher_detail_back_per).into(imBackButton);
+        Glide.with(this).load(R.drawable.coursedetails_share_icon_gray).into(imShareButton);
+
+        imBackButton.setOnClickListener(new OnUnDoubleClickListener() {
+            @Override
+            public void onUnDoubleClick(View v) {
+                Intent intent = new Intent(CourseDetailActivity.this, CourseListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imShareButton.setOnClickListener(new OnUnDoubleClickListener() {
+            @Override
+            public void onUnDoubleClick(View v) {
+                ShareCourseFragment shareCourseFragment = new ShareCourseFragment();
+                shareCourseFragment.show(getSupportFragmentManager(),"");
+            }
+        });
+
     }
 
     protected void onDestroy() {
@@ -150,13 +186,83 @@ public class CourseDetailActivity extends AppCompatActivity {
         tvShoppingCart = findViewById(R.id.tv_shoppingCart);
         tvJoinShoppingCart = findViewById(R.id.tv_shopping_cart_join);
         tvRegister = findViewById(R.id.tv_register);
+        imBackButton = findViewById(R.id.iv_back_button);
+        imShareButton = findViewById(R.id.iv_share_button);
+        clCourseDetailTitleSlide = findViewById(R.id.cl_course_detail_title_slide);
+        tvCourseDetailTitleWord = findViewById(R.id.tv_course_detail_title_word);
+        tvCourseDetailCourse = findViewById(R.id.tv_course_detail_course);
+        tvCourseDetailOutline = findViewById(R.id.tv_course_detail_outline);
+        tvCourseDetailDetail = findViewById(R.id.tv_course_detail_detail);
+        tvCourseDetailEvaluate = findViewById(R.id.tv_course_detail_evaluate);
+        imCourseDetailLocation1 = findViewById(R.id.im_course_detail_location1);
+        imCourseDetailLocation2 = findViewById(R.id.im_course_detail_location2);
+        imCourseDetailLocation3 = findViewById(R.id.im_course_detail_location3);
+        imCourseDetailLocation4 = findViewById(R.id.im_course_detail_location4);
+        setSystemBarAlpha(0);
     }
 
     public void setAdapter(CourseDetail courseDetail) {
         CourseDetailAdapter adapter = new CourseDetailAdapter(courseDetail);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recycler_viewCourseDetail.setLayoutManager(layoutManager);
         recycler_viewCourseDetail.setAdapter(adapter);
+
+        tvCourseDetailTitleWord.setText(courseDetail.getResult().getData().getCourseName());
+        if ((courseDetail.getResult().getData().getEvaluation()) instanceof List) {
+            tvCourseDetailEvaluate.setVisibility(View.GONE);
+        }
+
+        //滑动监听事件
+        final CourseDetail finalCourseDetail = courseDetail;
+        RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int alpha = recycler_viewCourseDetail.computeVerticalScrollOffset();
+                int firstVisionItem = layoutManager.findFirstVisibleItemPosition();
+                if (firstVisionItem < 4) {
+                    setLocationPicture(View.VISIBLE, View.GONE, View.GONE, View.GONE);
+                }
+                else if (firstVisionItem == 7) {
+                    setLocationPicture(View.GONE, View.GONE, View.VISIBLE, View.GONE);
+                }
+                else if (firstVisionItem == 8) {
+                    setLocationPicture(View.GONE, View.GONE, View.GONE, View.VISIBLE);
+
+                }
+                else {
+                    if (!((finalCourseDetail.getResult().getData().getEvaluation()) instanceof List)) {
+                        setLocationPicture(View.GONE, View.VISIBLE, View.GONE, View.GONE);
+                    }
+                }
+                setSystemBarAlpha(alpha);
+            }
+        };
+        recycler_viewCourseDetail.addOnScrollListener(mOnScrollListener);
+
+    }
+
+    /**
+     * 设置标题栏背景透明度
+     * @param alpha 透明度
+     */
+    @SuppressLint("Range")
+    private void setSystemBarAlpha(int alpha) {
+        if (alpha >= 225) {
+            alpha = 255;
+        }
+        clCourseDetailTitleSlide.setAlpha(alpha);
+//        tvCourseDetailTitleWord.getBackground().setAlpha(alpha);
+//        tvCourseDetailCourse.getBackground().setAlpha(alpha);
+//        tvCourseDetailOutline.getBackground().setAlpha(alpha);
+//        tvCourseDetailDetail.getBackground().setAlpha(alpha);
+    }
+
+    private void setLocationPicture(int location1, int location2, int location3, int location4) {
+        imCourseDetailLocation1.setVisibility(location1);
+        imCourseDetailLocation2.setVisibility(location2);
+        imCourseDetailLocation3.setVisibility(location3);
+        imCourseDetailLocation4.setVisibility(location4);
     }
 
     public void onClick(View v) {
@@ -202,7 +308,7 @@ public class CourseDetailActivity extends AppCompatActivity {
 
                 APIService apiService = retrofit.create(APIService.class);
                 //获取Call对象
-                Call<ResponseBody> call = apiService.post(COOKIE, courseId, "android","80701");
+                Call<ResponseBody> call = apiService.post(IDENTIFIERFORCLIENT, courseId, "android","80701");
                 this.courseId = courseId;
 
                 call.enqueue(new Callback<ResponseBody>() {

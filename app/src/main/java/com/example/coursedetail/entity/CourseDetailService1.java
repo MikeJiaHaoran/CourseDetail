@@ -11,9 +11,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.fragment.ServiceDialogFragment;
-import com.example.coursedetail.model.courseDetail.ActivitiesList;
-import com.example.coursedetail.model.courseDetail.CourseDetail;
-import com.example.coursedetail.model.courseDetail.CourseDetailService;
+import com.example.coursedetail.model.coursedetail.ActivitiesList;
+import com.example.coursedetail.model.coursedetail.CourseDetail;
+import com.example.coursedetail.model.coursedetail.CourseDetailService;
 import com.example.coursedetail.R;
 
 import java.util.ArrayList;

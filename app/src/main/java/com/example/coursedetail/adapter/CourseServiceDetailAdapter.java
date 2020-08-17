@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coursedetail.entity.CourseDetailServiceDetail;
-import com.example.coursedetail.model.courseDetail.CourseDetailService;
+import com.example.coursedetail.model.coursedetail.CourseDetailService;
 import com.example.coursedetail.R;
 
 import java.util.List;

@@ -6,15 +6,185 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_course_detail_title_slide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/tv_course_detail_title_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            app:layout_constrainedWidth="true"
+            android:textColor="#212831"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="hhhhhhhhhhhhhhhhhh"
+            />
+
+        <ImageView
+            android:id="@+id/im_course_detail_location1"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:layout_constraintRight_toLeftOf="@id/tv_course_detail_course"
+            app:layout_constraintTop_toTopOf="@id/tv_course_detail_course"
+            app:layout_constraintBottom_toBottomOf="@id/tv_course_detail_course"
+            android:background="@drawable/ic_xesmall_location_location_icon"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp" />
+
+        <TextView
+            android:id="@+id/tv_course_detail_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_course_detail_title_word"
+            app:layout_constraintRight_toLeftOf="@id/tv_course_detail_evaluate"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+
+            android:textSize="14dp"
+            android:textColor="#212831"
+            android:text="课程"
+            />
+
+        <ImageView
+            android:id="@+id/im_course_detail_location2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:layout_constraintRight_toLeftOf="@id/tv_course_detail_evaluate"
+            app:layout_constraintTop_toTopOf="@id/tv_course_detail_evaluate"
+            app:layout_constraintBottom_toBottomOf="@id/tv_course_detail_evaluate"
+            android:background="@drawable/ic_xesmall_location_location_icon"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv_course_detail_evaluate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_course_detail_title_word"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_course_detail_course"
+            app:layout_constraintRight_toLeftOf="@id/tv_course_detail_outline"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:textSize="14dp"
+            android:textColor="#212831"
+            android:text="评价"
+
+            />
+
+        <ImageView
+            android:id="@+id/im_course_detail_location3"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:layout_constraintRight_toLeftOf="@id/tv_course_detail_outline"
+            app:layout_constraintTop_toTopOf="@id/tv_course_detail_outline"
+            app:layout_constraintBottom_toBottomOf="@id/tv_course_detail_outline"
+            android:background="@drawable/ic_xesmall_location_location_icon"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv_course_detail_outline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/tv_course_detail_title_word"
+            app:layout_constraintLeft_toRightOf="@id/tv_course_detail_evaluate"
+            app:layout_constraintRight_toLeftOf="@id/tv_course_detail_detail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            android:textSize="14dp"
+            android:textColor="#212831"
+            android:text="大纲"
+            />
+
+        <ImageView
+            android:id="@+id/im_course_detail_location4"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:layout_constraintRight_toLeftOf="@id/tv_course_detail_detail"
+            app:layout_constraintTop_toTopOf="@id/tv_course_detail_detail"
+            app:layout_constraintBottom_toBottomOf="@id/tv_course_detail_detail"
+            android:background="@drawable/ic_xesmall_location_location_icon"
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv_course_detail_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toRightOf="@id/tv_course_detail_outline"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_course_detail_title_word"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            android:textSize="14dp"
+            android:textColor="#212831"
+            android:text="详情"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/iv_back_button"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/iv_share_button"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_main_page"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/cl_bottom"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_bottom"
@@ -23,72 +193,85 @@
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/rv_main_page"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        >
 
         <TextView
             android:id="@+id/tv_service"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
             android:drawableTop="@drawable/coursedetails_customerservice_icon"
             android:text="@string/service"
             android:textColor="#858C96"
             android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_shoppingCart"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
             android:drawableTop="@drawable/coursedetails_shoppingcart_icon_normal"
             android:text="@string/shopping_cart"
             android:textColor="#858C96"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/cl_bottom_cart"
             app:layout_constraintStart_toEndOf="@id/tv_service"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlSymmetry" />
+            />
 
-        <TextView
-            android:id="@+id/tv_shopping_cart_join"
-            android:layout_width="110dp"
-            android:layout_height="45dp"
-            android:background="@drawable/shape_corners_left_20_solid_fe9b43"
-            android:paddingStart="25dp"
-            android:paddingLeft="25dp"
-            android:paddingTop="12dp"
-            android:text="@string/join_shopping_cart"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_register"
-            app:layout_constraintStart_toEndOf="@+id/tv_shoppingCart"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_bottom_cart"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlSymmetry" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_shoppingCart"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            >
 
-        <TextView
-            android:id="@+id/tv_register"
-            android:layout_width="110dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/shape_corners_20_solid_eb002a"
-            android:paddingStart="30dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="12dp"
-            android:text="@string/register"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlSymmetry" />
+            <TextView
+                android:id="@+id/tv_shopping_cart_join"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:background="@drawable/shape_corners_left_20_solid_fe9b43"
+                android:text="@string/join_shopping_cart"
+                app:layout_constraintHorizontal_weight="1"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:gravity="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv_register"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:background="@drawable/shape_corners_20_solid_eb002a"
+                android:text="@string/register"
+                android:textColor="@color/white"
+                app:layout_constraintHorizontal_weight="1"
+                android:gravity="center"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/tv_shopping_cart_join"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
